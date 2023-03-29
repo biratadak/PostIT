@@ -1,1 +1,5 @@
+Model/.env
 env
+vendor/
+public/
+icons/
