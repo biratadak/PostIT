@@ -35,7 +35,15 @@ textarea {
   font-size: large;
 }
 
-.error {
+.error-div {
+  margin: 10px;
+  text-align: center;
+  background-color: #910000;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+
+}
+.error{
   color: red;
 }
 .success {
@@ -43,6 +51,8 @@ textarea {
   color: #fff;
   padding: 2px 5px;
   border-radius: 5px;
+  text-align: center;
+  border-radius: 10px;
 }
 .center {
   width: max-content;

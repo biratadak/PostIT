@@ -30,8 +30,7 @@ if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) 
         echo "<h3 class='success'>Account Successfully created<br> Try to Login</h3>";
         echo "<span >Redirecting page in <span class='counter'>10</span> sec.</span>";
         header("refresh:10;url=index.php");
-      } 
-      catch (Exception $e) {
+      } catch (Exception $e) {
         echo $e;
       }
 
@@ -87,24 +86,6 @@ if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) 
 
 
 </body>
-<script>
-  //Check validation
-  function validate() {
-    if (document.getElementsByName("nameerr")[0].innerHTML == "" && document.getElementsByName("mailerr")[0].innerHTML == "" && document.getElementsByName("usererr")[0].innerHTML == "" && document.getElementsByName("passerr")[0].innerHTML == "") {
-      return true;
-    }
-    else {
-      // alert("Fill all fields properly");
-      return false;
-    }
-  };
-
-  allLetter("name", "nameerr");
-  validMail("mailId", "mailerr");
-  validUser("userId", "usererr");
-  validPass("pass", "passerr");
-  togglePass("#togglePassword", "#pass");
-  countDown(".counter", 10);
-</script>
+<script src="class/register.js"></script>
 
 </html>

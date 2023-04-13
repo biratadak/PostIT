@@ -1,0 +1,1 @@
+togglePass("#togglePassword", "#pass");

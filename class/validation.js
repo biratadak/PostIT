@@ -1,4 +1,3 @@
-
 // Function to check only alphabet and spaces in given name field.
 function allLetter(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onchange = function () {
@@ -6,8 +5,7 @@ function allLetter(fieldName, errorFieldName) {
     var pattern = /^[A-Za-z-' ]+$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } 
-    else {
+    } else {
       document.getElementsByName(errorFieldName)[0].innerHTML =
         "Only letters and white space allowed";
     }
@@ -40,7 +38,8 @@ function validMail(fieldName, errorFieldName) {
     var pattern = /^[a-z0-9-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } else {
+    } 
+    else {
       document.getElementsByName(errorFieldName)[0].innerHTML =
         "Invalid Mail Id";
     }
@@ -63,7 +62,7 @@ function validUser(fieldName, errorFieldName) {
     var pattern = /^[A-Za-z-0-9]+$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } 
+    }
     else {
       document.getElementsByName(errorFieldName)[0].innerHTML =
         "User Id should only contain alphabet and number";

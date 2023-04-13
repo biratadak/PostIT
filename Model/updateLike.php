@@ -6,7 +6,7 @@ require('DbConnection.php');
 $db = new DbConnection('postit');
 
 if (isset($_REQUEST['postId'])) {
-    echo '<span id="totalLikes">' . $db->getLikeCountbyPostId($_REQUEST['postId'])->fetch_array()[0] . '</span>';
+    echo '<span id="totalLikes">' . $db->getLikeCountbyPostId($_REQUEST['postId']) . '</span>';
 }
 if (isset($_REQUEST['userId'])) {
     foreach ($db->getLikedPostId($_REQUEST['userId'])->fetch_all() as $row)
