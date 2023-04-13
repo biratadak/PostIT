@@ -10,9 +10,13 @@ require('../Model/DbConnection.php');
 $db = new DbConnection('postit');
 
 if (isset($_REQUEST['setPost']) && $_REQUEST['setPost'] == 'TRUE') {
+    // Holds the image url if provided.
     $image = "";
+    // Holds the audio url if provided.
     $audio = "";
+    // Holds the video url if provided.
     $video = "";
+    // Holds the comment string if provided.
     $comment = "";
     if (($_FILES['photo-upload']['error']) == 0) {
         move_uploaded_file($_FILES['photo-upload']['tmp_name'], "../public/uploads/" . $_FILES['photo-upload']['name']);

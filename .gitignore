@@ -1,5 +1,10 @@
+# Remove dotenv credential files.
 Model/.env
+# Remove dotenv credential files.
 env
+# Remove vendor files.
 vendor/
+# Remove public assets.
 public/
+# Remove icons assets.
 icons/

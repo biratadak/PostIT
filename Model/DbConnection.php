@@ -18,7 +18,7 @@ $dotenv->safeLoad();
  * */
 class DbConnection
 {
-
+  // Define global $conn to hold connection object after successful authentication with database.
   public $conn;
   function __construct($database = "postit")
   {
@@ -66,7 +66,7 @@ class DbConnection
   /**
    * Sends query response as array. 
    * 
-   * @param $query
+   * @param string $query
    *  Stores the query string.
    *  
    * @return array
@@ -130,7 +130,7 @@ class DbConnection
   /**
    * Get Password of given userId. 
    * 
-   * @param $userId
+   * @param string $userId
    *  Stores the user Id string.
    *  
    * @return string
@@ -151,7 +151,7 @@ class DbConnection
   /**
    * Get name of given userId. 
    * 
-   * @param $userId
+   * @param string $userId
    *  Stores the user Id string.
    *  
    * @return string
@@ -169,7 +169,7 @@ class DbConnection
   /**
    * Get name of given ID. 
    * 
-   * @param $id
+   * @param int $id
    *  Stores the Id .
    *  
    * @return string
@@ -187,7 +187,7 @@ class DbConnection
   /**
    * Get Id of given userId. 
    * 
-   * @param $userId
+   * @param string $userId
    *  Stores the user Id string.
    *  
    * @return string
@@ -205,7 +205,7 @@ class DbConnection
   /**
    * Get About of given userId. 
    * 
-   * @param $userId
+   * @param string $userId
    *  Stores the user Id string.
    *  
    * @return string
@@ -224,7 +224,7 @@ class DbConnection
    * Get all users of ordered by given order,
    * by default it order by first_name.  
    * 
-   * @param $order
+   * @param string $order
    *  Stores the order string.
    *  
    * @return mysqli_result
@@ -239,10 +239,10 @@ class DbConnection
   /**
    * Get limit number of posts of ordered by given order. 
    * 
-   * @param $order
+   * @param string $order
    *  Stores the order string.
    * 
-   * @param $limit
+   * @param int $limit
    *  Stores the limit string.
    *  
    * @return mysqli_result
@@ -256,7 +256,7 @@ class DbConnection
   /**
    * Get online status of given userId. 
    * 
-   * @param $userId
+   * @param string $userId
    *  Stores the user id string.
    *  
    * @return string
@@ -270,7 +270,7 @@ class DbConnection
   /**
    * Get like count of given postId. 
    * 
-   * @param $postId
+   * @param int $postId
    *  Stores the post id string.
    *  
    * @return int
@@ -284,7 +284,7 @@ class DbConnection
    /**
    * Get postIds of liked posts only. 
    * 
-   * @param $userId
+   * @param int $userId
    *  Stores the user id string.
    *  
    * @return object
@@ -298,7 +298,7 @@ class DbConnection
   /**
    * Get post id of given userId as string. 
    * 
-   * @param $userId
+   * @param int $userId
    *  Stores the user id string.
    *  
    * @return string
@@ -398,7 +398,7 @@ class DbConnection
   /**
    * Delete post of given postId. 
    * 
-   * @param $postId
+   * @param string $postId
    *  Stores the psot id string.
    *  
    */
