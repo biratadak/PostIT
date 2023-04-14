@@ -15,19 +15,15 @@
   } 
   // If Ajax called for a perticular like then update them accordingly. 
   else if (isset($_GET['pi']) && isset($_GET['ui'])) {
-      $q = $db->conn->query('SELECT * from likes where `post_id`=' . $_GET['pi'] . ' AND `id`=' . $_GET['ui'])->fetch_assoc();
-      if (isset($q)) {
-          if ($q['liked'] == "TRUE") {
-
-              $db->conn->query("DELETE FROM likes 
-          WHERE `post_id`=" . $_GET['pi'] . " AND `id`=" . $_GET['ui']
-              );
+      
+      $query = $db->conn->query('SELECT * from likes where `post_id`=' . $_GET['pi'] . ' AND `id`=' . $_GET['ui'])->fetch_assoc();
+      // 
+      if (isset($query)) {
+          if ($query['liked'] == "TRUE") {
+              $db->conn->query("DELETE FROM likes WHERE `post_id`=" . $_GET['pi'] . " AND `id`=" . $_GET['ui'] );
           } 
           else {
-
-              $db->conn->query("UPDATE `likes` 
-          SET `liked`='TRUE' 
-          WHERE `post_id`=" . $_GET['pi'] . " AND `id`=" . $_GET['ui']
+              $db->conn->query("UPDATE `likes` SET `liked`='TRUE' WHERE `post_id`=" . $_GET['pi'] . " AND `id`=" . $_GET['ui']
               );
           }
 

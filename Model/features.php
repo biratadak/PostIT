@@ -39,7 +39,7 @@
     /** 
      * Checks if a String only contains alphabets and whitespaces.
      * 
-     *  @param  $str
+     *  @param string $str
      *    Stores the String to varify. 
      * 
      **/
@@ -54,7 +54,7 @@
     /** 
      * Fucntion to check the String only has digits.
      * 
-     *  @param  $str
+     *  @param string $str
      *    Stores the String to varify. 
      * 
      **/
@@ -70,10 +70,10 @@
     /** 
      *   Checks wether given image is jpg/png and under 500kb.
      * 
-     *  @param  $imageSize
+     *  @param string $imageSize
      *    Stores the size of the image. 
      * 
-     *  @param  $imageType
+     *  @param string $imageType
      *    Stores the datatype of the image. 
      * 
      **/
@@ -97,7 +97,7 @@
     /**
      * Checks if Mail Id is valid or not using RegEx.
      * 
-     *  @param  $mailId
+     *  @param string $mailId
      *    Stores the Mail Id of the user. 
      * 
      **/
@@ -112,7 +112,7 @@
     /**
      * Checks if user Id is valid or not using RegEx.
      * 
-     *  @param  $userId
+     *  @param string $userId
      *    Stores the Mail Id of the user. 
      * 
      **/
@@ -127,7 +127,7 @@
     /**
      * Checks Mail Id validation with mailBoxLayer API.
      * 
-     *  @param  $mailId
+     *  @param string $mailId
      *    Stores the Mail Id of the user. 
      * 
      **/
@@ -177,7 +177,7 @@
 
     /** 
      * Send Mails using PHP-Mailer. 
-     *  @param  $mailId
+     *  @param string $mailId
      *    Takes mailId as input field data of the user. 
      * 
      **/
@@ -212,7 +212,7 @@
 
     /** 
      * Get response body from url using Guzzle.
-     *  @param  $url
+     *  @param string $url
      *    Takes url as input and return response body. 
      *  @return Psr\Http\Message\StreamInterface
      **/

@@ -3,7 +3,7 @@
   /**
    * Routes the pages in body section using Request_URI.
    */
-
+  // If the session loggedIn is set then route pages.
   if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE) {
     switch ($_SERVER['REQUEST_URI']) {
       case "/home":
@@ -20,6 +20,7 @@
         break;
     }
   } 
+  // If session is not set then show error.
   else {
     echo 'Not logged in';
   }

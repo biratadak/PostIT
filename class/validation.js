@@ -1,4 +1,13 @@
-// Function to check only alphabet and spaces in given name field.
+
+/**
+ * Function to check only alphabet and spaces in given name field.
+ * 
+ *  @param fieldName
+ *    Field name where to check the error.
+ *  @param errorFieldName
+ *    Name of the field to display error if occured.
+ *    
+ * */ 
 function allLetter(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onchange = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
@@ -11,7 +20,16 @@ function allLetter(fieldName, errorFieldName) {
     }
   };
 }
-// Function to check valid Indian phone no.
+
+/**
+ * Function to check valid Indian phone no.
+ * 
+ *  @param fieldName
+ *    Field name where to check the error.
+ *  @param errorFieldName
+ *    Name of the field to display error if occured.
+ *    
+ * */
 function validPhone(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
@@ -31,7 +49,16 @@ function validPhone(fieldName, errorFieldName) {
     }
   };
 }
-// Function to check valid mail id.
+
+/**
+ * Function to check valid mail id.
+ * 
+ *  @param fieldName
+ *    Field name where to check the error.
+ *  @param errorFieldName
+ *    Name of the field to display error if occured.
+ *    
+ * */
 function validMail(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
@@ -45,7 +72,16 @@ function validMail(fieldName, errorFieldName) {
     }
   };
 }
-// Function to live update the display field with data from given name field.
+
+/**
+ * Function to live update the display field with data from given name field.
+ * 
+ *  @param fieldName
+ *    Field name where to check the error.
+ *  @param errorFieldName
+ *    Name of the field to display error if occured.
+ *    
+ * */
 function liveUpdate(fieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
     document.querySelector("#display").value = document
@@ -55,7 +91,15 @@ function liveUpdate(fieldName) {
   };
 }
 
-// Function to check valid Indian phone no.
+/**
+ * Function to check valid Indian phone no.
+ * 
+ *  @param fieldName
+ *    Field name where to check the error.
+ *  @param errorFieldName
+ *    Name of the field to display error if occured.
+ *    
+ * */
 function validUser(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
@@ -70,7 +114,15 @@ function validUser(fieldName, errorFieldName) {
   };
 }
 
-// Function to check Password has atleast one char,digit and Special character.
+/**
+ * Function to check Password has atleast one char,digit and Special character.
+ * 
+ *  @param fieldName
+ *    Field name where to check the error.
+ *  @param errorFieldName
+ *    Name of the field to display error if occured.
+ *    
+ * */
 function validPass(fieldName, errorFieldName) {
   document.getElementsByName(fieldName)[0].onkeyup = function () {
     inputtxt = document.getElementsByName(fieldName)[0].value;
@@ -91,7 +143,7 @@ function validPass(fieldName, errorFieldName) {
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "<br>*Password should contain atleast special character";
       else document.getElementsByName(errorFieldName)[0].innerHTML = "";
-
+      // If password is not between 8 and 16 characters then show error.
       if (length(inputtxt) < 8 && length(inputtxt) < 16) {
         document.getElementsByName(errorFieldName)[0].innerHTML =
           "<br>*Password should contain 8 to 16";
@@ -100,7 +152,16 @@ function validPass(fieldName, errorFieldName) {
   };
 }
 
-// Toggle show and hide password script.
+
+/**
+ * Toggle show and hide password script.
+ * 
+ *  @param buttonField
+ *    Field name where to check the error.
+ *  @param passField
+ *    Name of the password field.
+ *    
+ * */
 function togglePass(buttonField, passField) {
   const togglePassword = document.querySelector(buttonField);
   const password = document.querySelector(passField);
@@ -115,7 +176,15 @@ function togglePass(buttonField, passField) {
   });
 }
 
-// Countdown timer after some delay.
+/**
+ * Countdown timer after some delay.
+ * 
+ *  @param displayQuerySelector
+ *    Field name where to shoe countdown.
+ *  @param delay
+ *    Name of the password field.
+ *    
+ * */
 function countDown(displayQuerySelector, delay) {
   const field = document.querySelector(displayQuerySelector);
   let num = parseInt(delay);

@@ -5,21 +5,23 @@
 if (!isset($_SESSION))
   session_start();
 
-require('../Model/DbConnection.php');
+  require('../Model/DbConnection.php');
+  $db = new DbConnection();
 // For post counts.
 if (isset($_POST['newCount'])) {
   $limit = $_POST['newCount'];
 }
 
-// For ordering posts.
+// When order is set ordering the posts according to it.
 if (isset($_POST['order']) && $_POST['order'] != "") {
   $order = $_POST['order'];
 } 
+// If order not set then order it by default in terms of postId.
 else if (isset($_POST['order']) && $_POST['order'] == "") {
   $order = "post_id DESC";
 }
 
-$db = new DbConnection();
+// Show all posts one by one.
 foreach ($db->getAllPosts($order, $limit) as $row) {
   ?>
 
@@ -35,6 +37,7 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
         </H6>
       </div>
       <?php
+      // If the post is current user's post, then add show some extra options to edit.
       if ($row['id'] == $db->getId($_SESSION['userId'])) {
         ?>
         <div class="icon-text">
@@ -48,6 +51,8 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
 
     </div>
     <?php
+
+    // If video is available in post then list it.
     if ($row['video'] != "") { ?>
       <div class="content-img-div"><i>
           <video controls>
@@ -59,6 +64,8 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
             </video>
         </i></div>
     <?php }
+
+    // If photo is available in post then list it.
     if ($row['photo'] != "") { ?>
 
       <div class="content-img">
@@ -66,6 +73,7 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
       </div>
     <?php }
 
+    // If audio is available in post then list it.
     if ($row['audio'] != "") { ?>
       <div class="content-audio"><i>
           <audio controls>
