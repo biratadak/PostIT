@@ -1,36 +1,36 @@
 <?php
 
-require("model/DbConnection.php");
-require("model/features.php");
+  require("model/DbConnection.php");
+  require("model/Features.php");
 
-// If already loggedin redirect to submit page.
-if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
-  header("Location:index.php");
+  // If already loggedin redirect to submit page.
+  if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
+    header("Location:index.php");
 
-// Connect with Credential table database.
-$db = new DbConnection('postit');
+  // Connect with Credential table database.
+  $db = new DbConnection();
 
-// Checks first if submit is clicked
-if (isset($_POST["mailId"])) {
+  // Checks first if submit is clicked
+  if (isset($_POST["mailId"])) {
 
-  // If id and pass fields are not empty.
-  if ($_POST["mailId"] != "") {
-    if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $_POST['mailId']))
-      echo "<br><h4 class='error'>Invalid email address.</h4>";
+    // If id and pass fields are not empty.
+    if ($_POST["mailId"] != "") {
+      if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $_POST['mailId']))
+        echo "<br><h4 class='error'>Invalid email address.</h4>";
 
-    // If mail is valid then send reset link 
-    elseif ($db->existsMailId($_POST['mailId'])) {
-      $feature = new features();
-      $feature->sendMail($_POST['mailId'], "Password Reset Link", "Your UserId: " . $_POST['mailId'] . "<br>Password: " . $db->getPass($_POST['mailId']) . "<br>Change Password after login.");
+      // If mail is valid then send reset link 
+      elseif ($db->existsMailId($_POST['mailId'])) {
+        $feature = new Features();
+        $feature->sendMail($_POST['mailId'], "Password Reset Link", "Your UserId: " . $_POST['mailId'] . "<br>Password: " . $db->getPass($_POST['mailId']) . "<br>Change Password after login.");
+      } 
+      else {
+        echo "<br><h4 class='error-div'>Mail is not registered with &copyPostIt </h4>";
+      }
     } 
     else {
-      echo "<br><h4 class='error-div'>Mail is not registered with &copyPostIt </h4>";
+      echo "<h4 class='error-div'>Fill valid MailId</h4>";
     }
-  } 
-  else {
-    echo "<h4 class='error-div'>Fill valid MailId</h4>";
   }
-}
 ?>
 <html>
 

@@ -30,7 +30,8 @@
               if ($row['online'] == '1') { ?>
                 <div class="user-status">
                 </div>
-              <?php } else { ?>
+              <?php } 
+              else { ?>
                 <div class="user-status" style="background-color:red">
                 </div>
               <?php } ?>

@@ -1,49 +1,49 @@
 <?php
-require("model/DbConnection.php");
-require("model/features.php");
-// If already loggedin redirect to submit page.
-if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
-  header("Location:index.php");
+  require("model/DbConnection.php");
+  require("model/features.php");
+  // If already loggedin redirect to submit page.
+  if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
+    header("Location:index.php");
 
-// Connect with Credential table database.
-$db = new DbConnection();
-$feature= new features();
+  // Connect with Credential table database.
+  $db = new DbConnection();
+  $feature= new features();
 
-// Checks first if submit is clicked
-if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) && isset($_POST["pass"])) {
-  // If id and pass fields are not empty.
-  if ($_POST['name'] != "" && $_POST["mailId"] != "" && $_POST['userId'] != "" && $_POST["pass"] != "") {
-    if (!$feature->onlyAlpha($_POST['name']))
-      echo "<br><h4 class='error-div'>Invalid name</h4>";
-    if (!$feature->validMailId($_POST['mailId']))
-      echo "<br><h4 class='error-div'>Invalid email address.</h4>";
-    if (!$feature->validUserId($_POST['userId']))
-      echo "<br><h4 class='error-div'>User Id should only contain alphabet numbers and space</h4>";
-    // If user is not available in db
-    if ($db->existsUserId($_POST['userId']))
-      echo "<br><h4 class='error-div'>User Id is unavailable</h4>";
-    // If mail id is not available in db
-    if ($db->existsMailId($_POST['mailId']))
-      echo "<br><h4 class='error-div'>Mail Id is unavailable</h4>";
-    // If all fileds are valid then insert data into database
-    else {
-      try {
-        date_default_timezone_set("Asia/Kolkata");
-        $sql = "INSERT INTO `oauth-users` (`oauth_provider`, first_name, last_name, email, user_id, pass,modified) values('postit','" . explode(' ', $_POST['name'], 2)[0] . "','" . explode(' ', $_POST['name'] . " ", 2)[1] . "','" . $_POST["mailId"] . "','" . $_POST['userId'] . "','" . $_POST['pass'] . "','" . date("y-m-d h:i:s") . "')";
-        $db->conn->query($sql);
-        echo "<h3 class='success'>Account Successfully created<br> Try to Login</h3>";
-        echo "<span >Redirecting page in <span class='counter'>10</span> sec.</span>";
-        header("refresh:10;url=index.php");
-      } catch (Exception $e) {
-        echo $e;
+  // Checks first if submit is clicked
+  if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) && isset($_POST["pass"])) {
+    // If id and pass fields are not empty.
+    if ($_POST['name'] != "" && $_POST["mailId"] != "" && $_POST['userId'] != "" && $_POST["pass"] != "") {
+      if (!$feature->onlyAlpha($_POST['name']))
+        echo "<br><h4 class='error-div'>Invalid name</h4>";
+      if (!$feature->validMailId($_POST['mailId']))
+        echo "<br><h4 class='error-div'>Invalid email address.</h4>";
+      if (!$feature->validUserId($_POST['userId']))
+        echo "<br><h4 class='error-div'>User Id should only contain alphabet numbers and space</h4>";
+      // If user is not available in db
+      if ($db->existsUserId($_POST['userId']))
+        echo "<br><h4 class='error-div'>User Id is unavailable</h4>";
+      // If mail id is not available in db
+      if ($db->existsMailId($_POST['mailId']))
+        echo "<br><h4 class='error-div'>Mail Id is unavailable</h4>";
+      // If all fileds are valid then insert data into database
+      else {
+        try {
+          date_default_timezone_set("Asia/Kolkata");
+          $sql = "INSERT INTO `oauth-users` (`oauth_provider`, first_name, last_name, email, user_id, pass,modified) values('postit','" . explode(' ', $_POST['name'], 2)[0] . "','" . explode(' ', $_POST['name'] . " ", 2)[1] . "','" . $_POST["mailId"] . "','" . $_POST['userId'] . "','" . $_POST['pass'] . "','" . date("y-m-d h:i:s") . "')";
+          $db->conn->query($sql);
+          echo "<h3 class='success'>Account Successfully created<br> Try to Login</h3>";
+          echo "<span >Redirecting page in <span class='counter'>10</span> sec.</span>";
+          header("refresh:10;url=index.php");
+        } catch (Exception $e) {
+          echo $e;
+        }
+
       }
-
+    } 
+    else {
+      echo "<h4 class='error-div'>All fileds should be filled</h4>";
     }
-  } 
-  else {
-    echo "<h4 class='error-div'>All fileds should be filled</h4>";
   }
-}
 ?>
 <html>
 

@@ -15,12 +15,13 @@ if (isset($_POST['newCount'])) {
 if (isset($_POST['order']) && $_POST['order'] != "") {
   $order = $_POST['order'];
 } 
-elseif (isset($_POST['order']) && $_POST['order'] == "") {
+else if (isset($_POST['order']) && $_POST['order'] == "") {
   $order = "post_id DESC";
 }
 
-$db = new DbConnection('postit');
-foreach ($db->getAllPosts($order, $limit) as $row) { ?>
+$db = new DbConnection();
+foreach ($db->getAllPosts($order, $limit) as $row) {
+  ?>
 
   <div class="post" id="<?php echo $db->getId($_SESSION['userId']) . "-post-" . $row['post_id']; ?>">
     <div class="icon-text">
@@ -97,6 +98,6 @@ foreach ($db->getAllPosts($order, $limit) as $row) { ?>
       </div>
     </div>
   </div>
-  <?php
+<?php
 }
 ?>
