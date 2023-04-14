@@ -82,7 +82,7 @@ $(document).ready(function () {
     $.ajax({
       type: "POST",
       url: "Model/updatePosts.php?delete=TRUE&id=" + $id,
-      success: function (r) {
+      success: function () {
         // On Successfully update the database with new post reload the posts section.
         $(".posts").load("Model/getPosts.php", {
           newCount: $count,

@@ -4,8 +4,8 @@
    * Configuration file for LinekdIn authentication.
    */
   require_once('vendor/autoload.php');
-  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-  $dotenv->safeLoad();
+  $dotEnv = Dotenv\Dotenv::createImmutable(__DIR__);
+  $dotEnv->safeLoad();
   if (!isset($_SESSION['adapter'])) {
     $config = [
       'callback' => 'http://post.it/login.php',

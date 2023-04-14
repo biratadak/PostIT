@@ -15,9 +15,10 @@
 
     // If id and pass fields are not empty.
     if ($_POST["mailId"] != "") {
-      if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $_POST['mailId']))
+      if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $_POST['mailId'])) {
         echo "<br><h4 class='error'>Invalid email address.</h4>";
-
+      }
+      
       // If mail is valid then send reset link 
       elseif ($db->existsMailId($_POST['mailId'])) {
         $feature = new Features();
@@ -57,19 +58,6 @@
   </form>
 
 </body>
-<script>
-  // Check validation for sending forgot password mail.
-  function validate() {
-    if (document.getElementsByName("mailerr")[0].innerHTML == "") {
-      return true;
-    }
-    else {
-      return false;
-    }
-  };
 
-  validMail("mailId", "mailerr");
-  countDown(".counter", 10);
-</script>
-
+<script src="class/forgotPass.js"></script>
 </html>

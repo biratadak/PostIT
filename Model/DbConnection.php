@@ -5,8 +5,8 @@
   require("../vendor/autoload.php");
 
   // Loading .env credentials.
-  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-  $dotenv->safeLoad();
+  $dotEnv = Dotenv\Dotenv::createImmutable(__DIR__);
+  $dotEnv->safeLoad();
 
   /**
    * Connects with database using mysqli.
@@ -21,8 +21,7 @@
   class DbConnection {
     // Define global $conn to hold connection object after successful authentication with database.
     public $conn;
-    function __construct()
-    {
+    function __construct() {
       $connect = new mysqli("localhost", $_ENV['sqlUser'], $_ENV['sqlPass'], $_ENV['dbName']);
       if ($connect->connect_error) {
         echo "Connection error:" . $connect->connect_error;
@@ -39,8 +38,7 @@
      *  @return bool
      *    Returns TRUE if user exists ,else FALSE.
      */
-    public function existsUserId(string $userId)
-    {
+    public function existsUserId(string $userId) {
       if (isset($this->conn->query("select user_id from `oauth-users` where `user_id`='" . $userId . "'")->fetch_assoc()['user_id'])) {
         return TRUE;
       }
@@ -57,8 +55,7 @@
      *  @return bool
      *    Returns TRUE if mail id exists ,else FALSE.
      */
-    public function existsMailId(string $mailId)
-    {
+    public function existsMailId(string $mailId) {
       if (isset($this->conn->query("select email from `oauth-users` where email='" . $mailId . "'")->fetch_assoc()['email'])) {
         return TRUE;
       }
@@ -74,8 +71,7 @@
      *  @return array
      *    Response of the query string.
      */
-    public function getQueryArray(string $query)
-    {
+    public function getQueryArray(string $query) {
       $queryResponse = $this->conn->query($query);
       foreach ($queryResponse as $value) {
         $response[] = $value;
@@ -90,8 +86,7 @@
      *  @return string
      *    Returns path of image if user exists ,else empty string.
      */
-    public function getPhotoURLbyId(Int $Id)
-    {
+    public function getPhotoURLbyId(int $Id) {
       if (isset($this->conn->query('select photo_url from `oauth-users` where id="' . $Id . '"')->fetch_assoc()['photo_url'])) {
         return $this->conn->query('select photo_url from `oauth-users` where id="' . $Id . '"')->fetch_assoc()['photo_url'];
       }
@@ -104,8 +99,7 @@
      *  @return int
      *    Returns count if user exists ,else 0.
      */
-    public function getUsersCount()
-    {
+    public function getUsersCount() {
       if (isset($this->conn->query('select count(*) as count from `oauth-users`')->fetch_assoc()['count'])) {
         return $this->conn->query('select count(*) as count from `oauth-users`')->fetch_assoc()['count'];
       }
@@ -118,8 +112,7 @@
      *  @return string
      *    Returns path of image if user exists ,else empty string.
      */
-    public function getPhotoURLbyUserId(string $userId)
-    {
+    public function getPhotoURLbyUserId(string $userId) {
       if (isset($this->conn->query('select photo_url from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['photo_url'])) {
         return $this->conn->query('select photo_url from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['photo_url'];
       }
@@ -137,9 +130,7 @@
      *  @return string
      *    Returns pass if user exists ,else return empty string.
      */
-    public function getPass(string $userId)
-    {
-      
+    public function getPass(string $userId) {  
       if ($this->existsMailId($userId) && isset($this->conn->query("select pass from `oauth-users` where email='" . $userId . "'")->fetch_assoc()['pass'])) {
         return $this->conn->query("select pass from `oauth-users` where email='" . $userId . "'")->fetch_assoc()['pass'];
       }
@@ -159,8 +150,7 @@
      *  @return string
      *    Returns name if user exists ,else return empty string.
      */
-    public function getName(string $userId)
-    {
+    public function getName(string $userId) {
       if ($this->existsUserId($userId) && isset($this->conn->query("select first_name from `oauth-users` where user_id='" . $userId . "'")->fetch_assoc()['first_name'])) {
         return $this->conn->query('SELECT CONCAT_WS(" ", `first_name`, `last_name`) as `fullname` from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['fullname'];
       }
@@ -177,8 +167,7 @@
      *  @return string
      *    Returns Name if ID exists ,else return empty string.
      */
-    public function getNamebyId(Int $id)
-    {
+    public function getNamebyId(int $id) {
       if (isset($this->conn->query("select first_name from `oauth-users` where id='" . $id . "'")->fetch_assoc()['first_name'])) {
         return $this->conn->query('SELECT CONCAT_WS(" ", `first_name`, `last_name`) as `fullname` from `oauth-users` where id="' . $id . '"')->fetch_assoc()['fullname'];
       }
@@ -195,8 +184,7 @@
      *  @return string
      *    Returns ID if user exists ,else return empty string.
      */
-    public function getId(string $userId)
-    {
+    public function getId(string $userId) {
       if ($this->existsUserId($userId) && isset($this->conn->query("select id from `oauth-users` where user_id='" . $userId . "'")->fetch_assoc()['id'])) {
         return $this->conn->query('SELECT id from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['id'];
       }
@@ -213,8 +201,7 @@
      *  @return string
      *    Returns about if user exists ,else return empty string.
      */
-    public function getAbout(string $userId)
-    {
+    public function getAbout(string $userId) {
       if ($this->existsUserId($userId) && isset($this->conn->query("select first_name from `oauth-users` where user_id='" . $userId . "'")->fetch_assoc()['first_name'])) {
         return $this->conn->query('SELECT `about` from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['about'];
       }
@@ -232,8 +219,7 @@
      *  @return mysqli_result
      *    Returns all users ordered by givenr order.
      */
-    public function getAllUsers(string $order = "first_name")
-    {
+    public function getAllUsers(string $order = "first_name") {
         return $this->conn->query("SELECT * from `oauth-users` ORDER BY " . $order);
     }
 
@@ -249,8 +235,7 @@
      *  @return mysqli_result
      *    Returns limit numbers of posts ordered by given order .
      */
-    public function getAllPosts(string $order = "post_id", Int $limit = 5)
-    {
+    public function getAllPosts(string $order = "post_id", int $limit = 5) {
         return $this->conn->query("SELECT * from `posts` ORDER BY " . $order . " LIMIT " . $limit);
     }
 
@@ -263,8 +248,7 @@
      *  @return string
      *    Online status of user
      */
-    public function getOnline(string $userId)
-    {
+    public function getOnline(string $userId) {
       return $this->conn->query('select online from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['online'];
     }
 
@@ -277,8 +261,7 @@
      *  @return int
      *    Like count of posts
      */
-    public function getLikeCountbyPostId(Int $postId)
-    {
+    public function getLikeCountbyPostId(int $postId) {
       return $this->conn->query('SELECT count(*) from likes where `post_id`="' . $postId . '"')->fetch_array()[0];
     }
 
@@ -291,8 +274,7 @@
      *  @return object
      *    Id's of posts
      */
-    public function getLikedPostId(Int $userId)
-    {
+    public function getLikedPostId(int $userId) {
       return $this->conn->query('SELECT `post_id` from likes WHERE `id`=' . $userId);
     }
 
@@ -305,8 +287,7 @@
      *  @return string
      *    Array of post ids 
      */
-    public function getPostIdbyUserId(Int $userId)
-    {
+    public function getPostIdbyUserId(int $userId) {
       $str = "";
       foreach ($this->conn->query("SELECT post_id from likes where `id`=" . $userId)->fetch_all() as $r)
         $str .= ($r[0] . ' ');
@@ -335,8 +316,7 @@
      *    Stores the photo link with filename of post.
      *  
      */
-    public function setPost(Int $id, string $content, string $name, string $audio = "", string $video = "", string $photo = ""): void
-    {
+    public function setPost(int $id, string $content, string $name, string $audio = "", string $video = "", string $photo = ""): void {
       $this->conn->query('INSERT INTO `posts` (id,content,name,audio,video,photo)
     values(' . $id . ',"' . $content . '","' . $this->getNamebyId($id) . '","' . $audio . '","' . $video . '","' . $photo . '")');
     }
@@ -375,8 +355,7 @@
      *    Stores the modification date  of account details.
      *  
      */
-    public function setUser(string $oauth_provider, string $user_id, string $first_name, string $last_name, string $email, string $phone, string $gender, string $photo_url, string $link, string $modified): void
-    {
+    public function setUser(string $oauth_provider, string $user_id, string $first_name, string $last_name, string $email, string $phone, string $gender, string $photo_url, string $link, string $modified): void {
       $sql = "INSERT INTO `oauth-users` (oauth_provider, user_id , first_name, last_name, email, phone, photo_url, link ,modified ) values('" . $oauth_provider . "','" . $user_id . "','" . $first_name . "','" . $last_name . "','" . $email . "','" . $phone . "','" . $photo_url . "','" . $link . "','" . $modified . "')";
       $this->conn->query($sql);
     }
@@ -391,20 +370,18 @@
      *    Stores the status string.
      *  
      */
-    public function setOnline(string $userId, string $status)
-    {
+    public function setOnline(string $userId, string $status):void {
       $this->conn->query('UPDATE `oauth-users` SET online="' . $status . '" where user_id="' . $userId . '"');
     }
 
     /**
      * Delete post of given postId. 
      * 
-     *  @param string $postId
+     *  @param int $postId
      *    Stores the psot id string.
      *  
      */
-    public function deletePost(Int $postId):void
-    {
+    public function deletePost(int $postId):void {
       $this->conn->query('SET FOREIGN_KEY_CHECKS = 0');
       $this->conn->query('DELETE FROM POSTS WHERE post_id="' . $postId . '"');
       $this->conn->query('SET FOREIGN_KEY_CHECKS = 1');

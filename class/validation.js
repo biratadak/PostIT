@@ -14,7 +14,8 @@ function allLetter(fieldName, errorFieldName) {
     var pattern = /^[A-Za-z-' ]+$/;
     if (inputtxt.match(pattern)) {
       document.getElementsByName(errorFieldName)[0].innerHTML = "";
-    } else {
+    } 
+    else {
       document.getElementsByName(errorFieldName)[0].innerHTML =
         "Only letters and white space allowed";
     }
@@ -132,17 +133,24 @@ function validPass(fieldName, errorFieldName) {
     } 
     else {
       // Checks for atleast one digit.
-      if (!inputtxt.match(/^(?=.*\d)/))
+      if (!inputtxt.match(/^(?=.*\d)/)){
+
         document.getElementsByName(errorFieldName)[0].innerHTML =
-          "<br>*Password should contain atleast one digit";
+        "<br>*Password should contain atleast one digit";
+      }
       // Checks for atleast one alphabet.
-      else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/))
+      else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/)){
+
         document.getElementsByName(errorFieldName)[0].innerHTML =
-          "<br>*Password should contain atleast one uppercase and lowercase";
-      else if (!inputtxt.match(/^(?=.*[!@#$%^&*])/))
+        "<br>*Password should contain atleast one uppercase and lowercase";
+      }
+      else if (!inputtxt.match(/^(?=.*[!@#$%^&*])/)){
         document.getElementsByName(errorFieldName)[0].innerHTML =
-          "<br>*Password should contain atleast special character";
-      else document.getElementsByName(errorFieldName)[0].innerHTML = "";
+        "<br>*Password should contain atleast special character";
+      }
+      else {
+        document.getElementsByName(errorFieldName)[0].innerHTML = "";
+      }
       // If password is not between 8 and 16 characters then show error.
       if (length(inputtxt) < 8 && length(inputtxt) < 16) {
         document.getElementsByName(errorFieldName)[0].innerHTML =
@@ -151,7 +159,6 @@ function validPass(fieldName, errorFieldName) {
     }
   };
 }
-
 
 /**
  * Toggle show and hide password script.
@@ -191,6 +198,8 @@ function countDown(displayQuerySelector, delay) {
   const i = setInterval(() => {
     num -= 1;
     field.innerText = num;
-    if (num === 0) clearInterval(i);
+    if (num === 0) {
+      clearInterval(i);
+    }
   }, 1000);
 }

@@ -30,7 +30,7 @@
 		<?php
 	} 
 	else {
-		echo "<br><h1 class='bg-danger'>user not logged in</h1>";
-	}
+		?>
+		<br><h1 class='bg-danger'>user not logged in</h1>
 
-?>
+<?php } ?>

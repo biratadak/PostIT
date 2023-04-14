@@ -18,7 +18,7 @@
   <div class="create-comment">
     <img class="comment-user-icon" src="<?php echo $db->getPhotoURLbyId($_GET['ui']) ?>">
     <textarea class="comment-input">
-          </textarea>
+    </textarea>
     <a>
       <img class="comment-send-icon cell" id="<?php echo 'comment-send-btn-' . $_GET['pi'] ?>"
         src="../icons/send-btn.gif">

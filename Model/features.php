@@ -4,9 +4,9 @@
   use PHPMailer\PHPMailer\Exception;
   use GuzzleHttp\Client;
 
-  // Getting secret credentials using dotenv.
-  $dotenv = Dotenv\Dotenv::createImmutable(__DIR__);
-  $dotenv->safeLoad();
+  // Getting secret credentials using dotEnv.
+  $dotEnv = Dotenv\Dotenv::createImmutable(__DIR__);
+  $dotEnv->safeLoad();
   /**
    * Provides some usefull features for the checking, validating and upload files.
    * 
@@ -32,17 +32,15 @@
    *    Get response body of given URL using GuzzleHTTP client request.
    * 
    **/
-  class Features
-  {
+  class Features {
     /** 
-     * Checks if a String only contains alphabets and whitespaces.
+     * Checks if a string only contains alphabets and whitespaces.
      * 
      *  @param string $str
-     *    Stores the String to varify. 
+     *    Stores the string to varify. 
      * 
      **/
-    public function onlyAlpha($str)
-    {
+    public function onlyAlpha(string $str) {
       if (preg_match("/^[a-zA-Z-' ]*$/", $str)) {
         return TRUE;
       }
@@ -50,14 +48,13 @@
     }
 
     /** 
-     * Fucntion to check the String only has digits.
+     * Fucntion to check the string only has digits.
      * 
      *  @param string $str
-     *    Stores the String to varify. 
+     *    Stores the string to varify. 
      * 
      **/
-    public function onlyDigit(string $str)
-    {
+    public function onlyDigit(string $str) {
       if (preg_match("/^[1-9][0-9]{0,15}$/", $str))
         return TRUE;
 
@@ -65,17 +62,16 @@
     }
 
     /** 
-     *   Checks wether given image is jpg/png and under 500kb.
+     * Checks wether given image is jpg/png and under 500kb.
      * 
-     *  @param string $imageSize
+     *  @param int $imageSize
      *    Stores the size of the image. 
      * 
      *  @param string $imageType
      *    Stores the datatype of the image. 
      * 
      **/
-    public function validImage(int $imageSize, string $imageType)
-    {
+    public function validImage(int $imageSize, string $imageType) {
       if (($imageSize / 1000) <= 500 && ($imageType == 'image/jpg' || $imageType == 'image/png' || $imageType == 'image/jpeg')) {
         return TRUE;
       } 
@@ -98,8 +94,7 @@
      *    Stores the Mail Id of the user. 
      * 
      **/
-    public function validMailId(string $mailId)
-    {
+    public function validMailId(string $mailId) {
       if (preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $mailId)) {
         return TRUE;
       }
@@ -113,8 +108,7 @@
      *    Stores the Mail Id of the user. 
      * 
      **/
-    public function validUserId($userId)
-    {
+    public function validUserId(string $userId) {
       if (preg_match('/^[a-zA-Z0-9\s]+$/', $userId)) {
         return TRUE;
       }
@@ -128,8 +122,7 @@
      *    Stores the Mail Id of the user. 
      * 
      **/
-    public function validMailBox(string $mailId)
-    {
+    public function validMailBox(string $mailId) {
 
       // API Calling using HttpGuzzle.
       $client = new Client([
@@ -172,12 +165,12 @@
 
     /** 
      * Send Mails using PHP-Mailer. 
-     *  @param string $mailId
+     *  
+     * @param string $mailId
      *    Takes mailId as input field data of the user. 
      * 
      **/
-    public function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found")
-    {
+    public function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found") {
       $mail = new PHPMailer(TRUE);
 
       try {
@@ -205,12 +198,13 @@
 
     /** 
      * Get response body from url using Guzzle.
-     *  @param string $url
+     *  
+     * @param string $url
      *    Takes url as input and return response body. 
+     * 
      *  @return Psr\Http\Message\StreamInterface
      **/
-    public function getURL(string $url)
-    {
+    public function getURL(string $url) {
       $client = new Client([
         // Base uri of the site
         'base_uri' => $url,

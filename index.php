@@ -1,12 +1,12 @@
+
 <?php
+  if (!isset($_SESSION))
+    session_start();
+  require("vendor/autoload.php");
+  require("model/DbConnection.php");
 
-if (!isset($_SESSION))
-  session_start();
-require("vendor/autoload.php");
-require("model/DbConnection.php");
-
-// Header Loads here
-require('view/header.php');
+  // Header Loads here
+  require('view/header.php');
 ?>
 
 <head>
@@ -69,7 +69,8 @@ require('view/header.php');
     <?php
     // Footer section
     require('view/footer.php');
-  } else {
+  } 
+  else {
     ?>
 
     <form class="form-div" method="POST" action="index.php">
