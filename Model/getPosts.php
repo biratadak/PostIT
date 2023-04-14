@@ -85,8 +85,7 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
             Your browser does not support the <audio> element.
             </audio>
         </i></div>
-    <?php } 
-    ?>
+    <?php } ?>
 
     <p class="content-text">
       <?php echo $row['content']; 
@@ -110,6 +109,4 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
       </div>
     </div>
   </div>
-<?php
-}
-?>
+<?php } ?>
