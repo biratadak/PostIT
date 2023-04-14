@@ -26,7 +26,6 @@
 			porro labore consequuntur ullam excepturi odit, itaque non laboriosam! Ducimus neque iure est voluptate ullam
 			delectus tempore.
 
-
 		</p>
 		<?php
 	} 

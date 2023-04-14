@@ -7,10 +7,21 @@
       return false;
     }
   };
-
+  
+  // Checks if all charecters are letters only
   allLetter("name", "nameerr");
+
+  // Checks if mail is valid.
   validMail("mailId", "mailerr");
+
+  // Checks if userId is valid.
   validUser("userId", "usererr");
+
+  // Checks if password is valid.
   validPass("pass", "passerr");
+
+  // Toggle the hide/show password.
   togglePass("#togglePassword", "#pass");
+
+  // show countdown of 10 sec in the given field.
   countDown(".counter", 10);

@@ -1,4 +1,6 @@
+
 $(document).ready(function () {
+  // When click on comment send button ,call updateComment.php using ajax and update them. 
   $(".comment-send-icon").click(function () {
     $userId = $(this)
       .parent()
@@ -26,7 +28,8 @@ $(document).ready(function () {
       }
     );
   });
-
+  
+  // When click on comment option button ,show/hide the options. 
   $(".comment-option-icon").click(function () {
     $postOption = $(this).parent().children(".comment-edit-option");
     $postOption.slideToggle();

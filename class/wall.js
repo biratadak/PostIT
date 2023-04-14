@@ -3,10 +3,10 @@ $(document).ready(function () {
   $count = 5;
   $sort = "";
 
-  // To show posts on page reload
+  // To show posts on page reload.
   $(".posts").load("Model/getPosts.php", { newCount: $count, order: $sort });
 
-  // Post creating using ajax
+  // Post creating using ajax.
   $("#post-create-btn").click(function (e) {
     e.preventDefault();
     $content = $(this)
@@ -37,7 +37,7 @@ $(document).ready(function () {
       contentType: false,
       processData: false,
       success: function () {
-        // On Successfully update the database with new post reload the posts section
+        // On Successfully update the database with new post reload the posts section.
         $(".posts").load("Model/getPosts.php", {
           newCount: $count,
           order: $sort,
@@ -46,13 +46,13 @@ $(document).ready(function () {
     });
   });
 
-  // For loading old posts with button
+  // For loading old posts with button.
   $(".load-btn").click(function () {
     $count += 5;
     $(".posts").load("Model/getPosts.php", { newCount: $count, order: $sort });
   });
 
-  // FOR SORTING POSTS
+  // For sorting posts.
   $("#sort").change(function () {
     $sort = $(this).val();
     $(".posts").load("Model/getPosts.php", { newCount: $count, order: $sort });

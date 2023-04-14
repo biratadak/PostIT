@@ -81,7 +81,6 @@
       <option value="NAME DESC">Name Descending.</option>
     </select>
 
-
     <div class="posts">
     </div>
     <button class="load-btn">Load More</button>

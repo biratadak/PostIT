@@ -34,8 +34,6 @@
    **/
   class Features
   {
-    // String methods here. 
-
     /** 
      * Checks if a String only contains alphabets and whitespaces.
      * 
@@ -66,7 +64,6 @@
       return FALSE;
     }
 
-    // Image methods here
     /** 
      *   Checks wether given image is jpg/png and under 500kb.
      * 
@@ -150,8 +147,6 @@
       ]);
       $response = $request->getBody();
 
-
-
       // Checking format, mx, smtp, and deliverablity score for the mail
       if (json_decode($response)->format_valid == TRUE && json_decode($response)->mx_found == TRUE && json_decode($response)->smtp_check == TRUE) {
         echo "(E-mail deliverablity score is: " . ((json_decode($response)->score) * 100) . "% ).";
@@ -194,10 +189,8 @@
         $mail->Password = $_ENV['SMTPKey'];
         $mail->SMTPSecure = 'tls';
         $mail->Port = 587;
-
         $mail->setFrom($mailId, 'PostIt');
         $mail->addAddress($mailId);
-
         $mail->isHTML(TRUE);
         $mail->Subject = $subject;
         $mail->Body = $body;
@@ -225,7 +218,5 @@
       $request = $client->request('GET');
       return $request->getBody();
     }
-
   }
-
 ?>

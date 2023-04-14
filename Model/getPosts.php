@@ -1,7 +1,6 @@
 <script src="../class/getPosts.js"></script>
 
 <?php
-
 if (!isset($_SESSION))
   session_start();
 
@@ -53,7 +52,8 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
     <?php
 
     // If video is available in post then list it.
-    if ($row['video'] != "") { ?>
+    if ($row['video'] != "") { 
+    ?>
       <div class="content-img-div"><i>
           <video controls>
             <source src="<?php echo $row['video']; ?>" type="video/ogg" />
@@ -66,7 +66,8 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
     <?php }
 
     // If photo is available in post then list it.
-    if ($row['photo'] != "") { ?>
+    if ($row['photo'] != "") { 
+    ?>
 
       <div class="content-img">
         <img src="<?php echo $row['photo']; ?>" alt="~Picture not found~">
@@ -74,7 +75,8 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
     <?php }
 
     // If audio is available in post then list it.
-    if ($row['audio'] != "") { ?>
+    if ($row['audio'] != "") { 
+    ?>
       <div class="content-audio"><i>
           <audio controls>
             <source src="<?php echo $row['audio']; ?>" type="audio/ogg" />
@@ -83,10 +85,12 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
             Your browser does not support the <audio> element.
             </audio>
         </i></div>
-    <?php } ?>
+    <?php } 
+    ?>
 
     <p class="content-text">
-      <?php echo $row['content']; ?>
+      <?php echo $row['content']; 
+      ?>
     </p>
     <div class="post-options">
       <a class="icon-text like" id="<?php echo 'like-' . $row['post_id']; ?>" liked="FALSE">
