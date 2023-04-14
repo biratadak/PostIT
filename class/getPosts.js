@@ -72,10 +72,11 @@ $(document).ready(function () {
     $commentsSection.slideToggle();
   });
 
-  ////// MENU BUTTON //////
+  // On click onmenu button toggle the menu options.
   $(".post-menu-btn").click(function () {
     $(this).parent().children(".post-menu-option").slideToggle();
   });
+  // On click on delete button delete the post using ajax.
   $(".post-delete-btn").click(function () {
     $id = $(this).attr("id").split("-")[0];
     $.ajax({
@@ -91,8 +92,4 @@ $(document).ready(function () {
     });
   });
 
-  // Post edit button.
-  $(".post-edit-btn").click(function () {
-    // Edit section
-  });
 });

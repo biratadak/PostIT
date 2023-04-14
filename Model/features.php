@@ -11,26 +11,26 @@ $dotenv->safeLoad();
 /**
  * Provides some usefull features for the checking, validating and upload files.
  * 
- * @method onlyAlpha().
- *   Checks wether given str is only alphabet or not.
+ *  @method onlyAlpha().
+ *    Checks wether given str is only alphabet or not.
  * 
- * @method onlyDigit().
- *   Checks wether given str is only digit or not.
+ *  @method onlyDigit().
+ *    Checks wether given str is only digit or not.
  * 
- * @method validImage().
- *   Checks wether given image is jpg/png and under 500kb.
+ *  @method validImage().
+ *    Checks wether given image is jpg/png and under 500kb.
  *  
- * @method validMailId().
- *   Checks if Mail Id is valid or not using RegEx.
+ *  @method validMailId().
+ *    Checks if Mail Id is valid or not using RegEx.
  * 
- * @method validMailBox().
- *   Checks if Mail Id is valid or not using MailBoxLayer and Guzzle.
+ *  @method validMailBox().
+ *    Checks if Mail Id is valid or not using MailBoxLayer and Guzzle.
  * 
- * @method sendMail().
- *   Sends mail to given email Id.
+ *  @method sendMail().
+ *    Sends mail to given email Id.
  * 
- * @method getURL().
- *   Get response body of given URL using GuzzleHTTP client request.
+ *  @method getURL().
+ *    Get response body of given URL using GuzzleHTTP client request.
  * 
  **/
 class features
@@ -40,8 +40,8 @@ class features
   /** 
    * Checks if a string only contains alphabets and whitespaces.
    * 
-   * @param  $str
-   *   Stores the string to varify. 
+   *  @param  $str
+   *    Stores the string to varify. 
    * 
    **/
   function onlyAlpha($str)
@@ -57,8 +57,8 @@ class features
   /** 
    * Fucntion to check the string only has digits.
    * 
-   * @param  $str
-   *   Stores the string to varify. 
+   *  @param  $str
+   *    Stores the string to varify. 
    * 
    **/
   function onlyDigit($str)
@@ -73,11 +73,11 @@ class features
   /** 
    *   Checks wether given image is jpg/png and under 500kb.
    * 
-   * @param  $imageSize
-   *   Stores the size of the image. 
+   *  @param  $imageSize
+   *    Stores the size of the image. 
    * 
-   * @param  $imageType
-   *   Stores the datatype of the image. 
+   *  @param  $imageType
+   *    Stores the datatype of the image. 
    * 
    **/
   function validImage($imageSize, $imageType)
@@ -100,13 +100,30 @@ class features
   /**
    * Checks if Mail Id is valid or not using RegEx.
    * 
-   * @param  $mailId
-   *  Stores the Mail Id of the user. 
+   *  @param  $mailId
+   *    Stores the Mail Id of the user. 
    * 
    **/
   function validMailId(string $mailId)
   {
-    if (preg_match("/^[a-z0-9-.]{1,20}[@][a-z]{1,10}[.][a-z]{2,4}$/", $mailId)) {
+    if (preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $mailId)) {
+      return TRUE;
+    } 
+    else {
+      return FALSE;
+    }
+  }
+
+  /**
+   * Checks if user Id is valid or not using RegEx.
+   * 
+   *  @param  $userId
+   *    Stores the Mail Id of the user. 
+   * 
+   **/
+  function validUserId(string $userId)
+  {
+    if (preg_match('/^[a-zA-Z0-9\s]+$/', $userId)) {
       return TRUE;
     } 
     else {
@@ -117,8 +134,8 @@ class features
   /**
    * Checks Mail Id validation with mailBoxLayer API.
    * 
-   * @param  $mailId
-   *  Stores the Mail Id of the user. 
+   *  @param  $mailId
+   *    Stores the Mail Id of the user. 
    * 
    **/
   function validMailBox(string $mailId)
@@ -166,8 +183,8 @@ class features
 
   /** 
    * Send Mails using PHP-Mailer. 
-   * @param  $mailId
-   *   Takes mailId as input field data of the user. 
+   *  @param  $mailId
+   *    Takes mailId as input field data of the user. 
    * 
    **/
   function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found")
@@ -201,9 +218,9 @@ class features
 
   /** 
    * Get response body from url using Guzzle.
-   * @param  $url
-   *   Takes url as input and return response body. 
-   * @return Psr\Http\Message\StreamInterface
+   *  @param  $url
+   *    Takes url as input and return response body. 
+   *  @return Psr\Http\Message\StreamInterface
    **/
   function getURL(string $url)
   {

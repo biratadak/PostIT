@@ -27,9 +27,12 @@ require('view/header.php');
   if (isset($_POST['userId']) && isset($_POST['pass'])) {
 
     // If any fields are empty show error
-    if ($_POST['userId'] == "" || $_POST['pass'] == "") {
-      echo "<div class='error-div'>Fill all fields</div>";
-    }
+    if ($_POST['userId'] == "" || $_POST['pass'] == "") { ?>
+      <div class='error-div'>
+        <?php echo "Fill all fields"; ?>
+      </div>
+
+    <?php }
     // If user exists and all fields are valid then login and set session.
     else if (($db->existsUserId($_POST['userId']) && $_POST['pass'] == $db->getPass($_POST['userId'])) || ($db->existsMailId($_POST['userId']) && $_POST['pass'] == $db->getPass($_POST['userId']))) {
       $_SESSION['loggedIn'] = TRUE;
@@ -39,14 +42,19 @@ require('view/header.php');
       header("Location:http://post.it");
     }
     // If user exits but password is wrong then show error.
-    else if (($db->existsUserId($_POST['userId']) || $db->existsMailId($_POST['userId'])) && $_POST['pass'] != $db->getPass($_POST['userId'])) {
-      echo "<div class='error-div'>Password is incorrect</div>";
-      $forgotPass = TRUE;
+    else if (($db->existsUserId($_POST['userId']) || $db->existsMailId($_POST['userId'])) && $_POST['pass'] != $db->getPass($_POST['userId'])) { ?>
+          <div class='error-div'>
+        <?php echo "Password is incorrect"; ?>
+          </div>
+        <?php
+        $forgotPass = TRUE;
     }
     // If user not exits then show error.
-    else {
-      echo "<div class='error-div'>Login Credentials failed</div>";
-    }
+    else { ?>
+          <div class='error-div'>
+        <?php echo "Login Credentials failed"; ?>
+          </div>
+    <?php }
   }
 
   if ((isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'])) {
@@ -61,8 +69,7 @@ require('view/header.php');
     <?php
     // Footer section
     require('view/footer.php');
-  } 
-  else {
+  } else {
     ?>
 
     <form class="form-div" method="POST" action="index.php">

@@ -1,26 +1,30 @@
 <?php
 require("model/DbConnection.php");
+require("model/features.php");
 // If already loggedin redirect to submit page.
 if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE)
   header("Location:index.php");
+
 // Connect with Credential table database.
-$db = new DbConnection('postit');
+$db = new DbConnection();
+$feature= new features();
+
 // Checks first if submit is clicked
 if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) && isset($_POST["pass"])) {
   // If id and pass fields are not empty.
   if ($_POST['name'] != "" && $_POST["mailId"] != "" && $_POST['userId'] != "" && $_POST["pass"] != "") {
-    if (!preg_match('/^[a-zA-Z\s]+$/', $_POST['name']))
-      echo "<br><h4 class='error'>Invalid name</h4>";
-    if (!preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $_POST['mailId']))
-      echo "<br><h4 class='error'>Invalid email address.</h4>";
-    if (!preg_match('/^[a-zA-Z0-9\s]+$/', $_POST['userId']))
-      echo "<br><h4 class='error'>User Id should only contain alphabet numbers and space</h4>";
+    if (!$feature->onlyAlpha($_POST['name']))
+      echo "<br><h4 class='error-div'>Invalid name</h4>";
+    if (!$feature->validMailId($_POST['mailId']))
+      echo "<br><h4 class='error-div'>Invalid email address.</h4>";
+    if (!$feature->validUserId($_POST['userId']))
+      echo "<br><h4 class='error-div'>User Id should only contain alphabet numbers and space</h4>";
     // If user is not available in db
     if ($db->existsUserId($_POST['userId']))
-      echo "<br><h4 class='error'>User Id is unavailable</h4>";
+      echo "<br><h4 class='error-div'>User Id is unavailable</h4>";
     // If mail id is not available in db
     if ($db->existsMailId($_POST['mailId']))
-      echo "<br><h4 class='error'>Mail Id is unavailable</h4>";
+      echo "<br><h4 class='error-div'>Mail Id is unavailable</h4>";
     // If all fileds are valid then insert data into database
     else {
       try {
@@ -35,8 +39,9 @@ if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) 
       }
 
     }
-  } else {
-    echo "<h4 class='error'>All fileds should be filled</h4>";
+  } 
+  else {
+    echo "<h4 class='error-div'>All fileds should be filled</h4>";
   }
 }
 ?>
@@ -47,7 +52,6 @@ if (isset($_POST["name"]) && isset($_POST["mailId"]) && isset($_POST["userId"]) 
   <title>Register</title>
   <script src="class/validation.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-
 
 </head>
 

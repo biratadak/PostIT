@@ -19,7 +19,6 @@ elseif (isset($_POST['order']) && $_POST['order'] == "") {
   $order = "post_id DESC";
 }
 
-
 $db = new DbConnection('postit');
 foreach ($db->getAllPosts($order, $limit) as $row) { ?>
 
