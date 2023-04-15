@@ -7,6 +7,7 @@
   // Getting secret credentials using dotEnv.
   $dotEnv = Dotenv\Dotenv::createImmutable(__DIR__);
   $dotEnv->safeLoad();
+
   /**
    * Provides some usefull features for the checking, validating and upload files.
    * 
@@ -37,7 +38,10 @@
      * Checks if a string only contains alphabets and whitespaces.
      * 
      *  @param string $str
-     *    Stores the string to varify. 
+     *    Stores the string to varify.
+     * 
+     *  @return bool
+     *    return true is string contains only alphabet else false. 
      * 
      **/
     public function onlyAlpha(string $str) {
@@ -52,7 +56,10 @@
      * 
      *  @param string $str
      *    Stores the string to varify. 
-     * 
+     *  
+     *  @return bool
+     *    Return true is string contains only digits else false. 
+     *
      **/
     public function onlyDigit(string $str) {
       if (preg_match("/^[1-9][0-9]{0,15}$/", $str))
@@ -69,6 +76,9 @@
      * 
      *  @param string $imageType
      *    Stores the datatype of the image. 
+     *
+     *  @return bool
+     *    Return true is image is valid  else false. 
      * 
      **/
     public function validImage(int $imageSize, string $imageType) {
@@ -93,6 +103,9 @@
      *  @param string $mailId
      *    Stores the Mail Id of the user. 
      * 
+     *  @return bool
+     *    Return true is mail id is valid  else false. 
+     * 
      **/
     public function validMailId(string $mailId) {
       if (preg_match('/^([a-z0-9\+_\-]+)(\.[a-z0-9\+_\-]+)*@([a-z0-9\-]+\.)+[a-z]{2,6}$/ix', $mailId)) {
@@ -107,6 +120,9 @@
      *  @param string $userId
      *    Stores the Mail Id of the user. 
      * 
+     *  @return bool
+     *    Return true is user id is valid  else false. 
+     * 
      **/
     public function validUserId(string $userId) {
       if (preg_match('/^[a-zA-Z0-9\s]+$/', $userId)) {
@@ -120,6 +136,9 @@
      * 
      *  @param string $mailId
      *    Stores the Mail Id of the user. 
+     * 
+     *  @return bool
+     *    Return true is image is valid  else false. 
      * 
      **/
     public function validMailBox(string $mailId) {
@@ -166,11 +185,13 @@
     /** 
      * Send Mails using PHP-Mailer. 
      *  
-     * @param string $mailId
+     *  @param string $mailId
      *    Takes mailId as input field data of the user. 
      * 
+     *   @return void
+     * 
      **/
-    public function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found") {
+    public function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found") : void {
       $mail = new PHPMailer(TRUE);
 
       try {
@@ -199,10 +220,11 @@
     /** 
      * Get response body from url using Guzzle.
      *  
-     * @param string $url
+     *  @param string $url
      *    Takes url as input and return response body. 
      * 
      *  @return Psr\Http\Message\StreamInterface
+     *    returns body response of the requested url.
      **/
     public function getURL(string $url) {
       $client = new Client([

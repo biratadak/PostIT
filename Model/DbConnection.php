@@ -83,12 +83,15 @@
     /**
      * Get photo url of user by id. 
      * 
+     *  @param int $id
+     *    Stores the id of the user.
+     * 
      *  @return string
      *    Returns path of image if user exists ,else empty string.
      */
-    public function getPhotoURLbyId(int $Id) {
-      if (isset($this->conn->query('select photo_url from `oauth-users` where id="' . $Id . '"')->fetch_assoc()['photo_url'])) {
-        return $this->conn->query('select photo_url from `oauth-users` where id="' . $Id . '"')->fetch_assoc()['photo_url'];
+    public function getPhotoURLbyId(int $id) {
+      if (isset($this->conn->query('select photo_url from `oauth-users` where id="' . $id . '"')->fetch_assoc()['photo_url'])) {
+        return $this->conn->query('select photo_url from `oauth-users` where id="' . $id . '"')->fetch_assoc()['photo_url'];
       }
         return "";
     }
@@ -108,6 +111,9 @@
 
     /**
      * Get photo url of user by user id. 
+     * 
+     *  @param string $userId
+     *    Stores the user id of user.
      * 
      *  @return string
      *    Returns path of image if user exists ,else empty string.

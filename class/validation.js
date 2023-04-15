@@ -4,6 +4,7 @@
  * 
  *  @param fieldName
  *    Field name where to check the error.
+ * 
  *  @param errorFieldName
  *    Name of the field to display error if occured.
  *    
@@ -27,6 +28,7 @@ function allLetter(fieldName, errorFieldName) {
  * 
  *  @param fieldName
  *    Field name where to check the error.
+ * 
  *  @param errorFieldName
  *    Name of the field to display error if occured.
  *    
@@ -56,6 +58,7 @@ function validPhone(fieldName, errorFieldName) {
  * 
  *  @param fieldName
  *    Field name where to check the error.
+ * 
  *  @param errorFieldName
  *    Name of the field to display error if occured.
  *    
@@ -79,6 +82,7 @@ function validMail(fieldName, errorFieldName) {
  * 
  *  @param fieldName
  *    Field name where to check the error.
+ * 
  *  @param errorFieldName
  *    Name of the field to display error if occured.
  *    
@@ -97,6 +101,7 @@ function liveUpdate(fieldName) {
  * 
  *  @param fieldName
  *    Field name where to check the error.
+ * 
  *  @param errorFieldName
  *    Name of the field to display error if occured.
  *    
@@ -120,6 +125,7 @@ function validUser(fieldName, errorFieldName) {
  * 
  *  @param fieldName
  *    Field name where to check the error.
+ * 
  *  @param errorFieldName
  *    Name of the field to display error if occured.
  *    
@@ -165,6 +171,7 @@ function validPass(fieldName, errorFieldName) {
  * 
  *  @param buttonField
  *    Field name where to check the error.
+ * 
  *  @param passField
  *    Name of the password field.
  *    
@@ -188,6 +195,7 @@ function togglePass(buttonField, passField) {
  * 
  *  @param displayQuerySelector
  *    Field name where to shoe countdown.
+ * 
  *  @param delay
  *    Name of the password field.
  *    

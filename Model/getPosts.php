@@ -1,28 +1,28 @@
 <script src="../class/getPosts.js"></script>
 
 <?php
-if (!isset($_SESSION))
-  session_start();
+  if (!isset($_SESSION))
+    session_start();
 
-  require('../Model/DbConnection.php');
-  $db = new DbConnection();
-// For post counts.
-if (isset($_POST['newCount'])) {
-  $limit = $_POST['newCount'];
-}
+    require('../Model/DbConnection.php');
+    $db = new DbConnection();
+  // For post counts.
+  if (isset($_POST['newCount'])) {
+    $limit = $_POST['newCount'];
+  }
 
-// When order is set ordering the posts according to it.
-if (isset($_POST['order']) && $_POST['order'] != "") {
-  $order = $_POST['order'];
-} 
-// If order not set then order it by default in terms of postId.
-else if (isset($_POST['order']) && $_POST['order'] == "") {
-  $order = "post_id DESC";
-}
+  // When order is set ordering the posts according to it.
+  if (isset($_POST['order']) && $_POST['order'] != "") {
+    $order = $_POST['order'];
+  } 
+  // If order not set then order it by default in terms of postId.
+  else if (isset($_POST['order']) && $_POST['order'] == "") {
+    $order = "post_id DESC";
+  }
 
-// Show all posts one by one.
-foreach ($db->getAllPosts($order, $limit) as $row) {
-  ?>
+  // Show all posts one by one.
+  foreach ($db->getAllPosts($order, $limit) as $row) {
+?>
 
   <div class="post" id="<?php echo $db->getId($_SESSION['userId']) . "-post-" . $row['post_id']; ?>">
     <div class="icon-text">
@@ -36,9 +36,9 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
         </H6>
       </div>
       <?php
-      // If the post is current user's post, then add show some extra options to edit.
-      if ($row['id'] == $db->getId($_SESSION['userId'])) {
-        ?>
+        // If the post is current user's post, then add show some extra options to edit.
+        if ($row['id'] == $db->getId($_SESSION['userId'])) {
+      ?>
         <div class="icon-text">
           <img class="post-menu-icon post-menu-btn" src="icons/menu.png" alt="">
           <div class="post-menu-option hide">
@@ -51,8 +51,8 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
     </div>
     <?php
 
-    // If video is available in post then list it.
-    if ($row['video'] != "") { 
+      // If video is available in post then list it.
+      if ($row['video'] != "") { 
     ?>
       <div class="content-img-div"><i>
           <video controls>
@@ -63,19 +63,21 @@ foreach ($db->getAllPosts($order, $limit) as $row) {
               element.
             </video>
         </i></div>
-    <?php }
+    <?php 
+      }
 
-    // If photo is available in post then list it.
-    if ($row['photo'] != "") { 
+      // If photo is available in post then list it.
+      if ($row['photo'] != "") { 
     ?>
 
       <div class="content-img">
         <img src="<?php echo $row['photo']; ?>" alt="~Picture not found~">
       </div>
-    <?php }
+    <?php 
+      }
 
-    // If audio is available in post then list it.
-    if ($row['audio'] != "") { 
+      // If audio is available in post then list it.
+      if ($row['audio'] != "") { 
     ?>
       <div class="content-audio"><i>
           <audio controls>

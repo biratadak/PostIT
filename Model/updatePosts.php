@@ -14,19 +14,26 @@ session_start();
 			$video = "";
 			// Holds the comment string if provided.
 			$comment = "";
+
+      // If uploaded PHOTO has no error then load them.
 			if (($_FILES['photo-upload']['error']) == 0) {
 					move_uploaded_file($_FILES['photo-upload']['tmp_name'], "../public/uploads/" . $_FILES['photo-upload']['name']);
 					$image = "../public/uploads/" . $_FILES['photo-upload']['name'];
 			}
 
+      // If uploaded AUDIO has no error then load them.
 			if (($_FILES['audio-upload']['error']) == 0) {
 					move_uploaded_file($_FILES['audio-upload']['tmp_name'], "../public/uploads/" . $_FILES['audio-upload']['name']);
 					$audio = "../public/uploads/" . $_FILES['audio-upload']['name'];
 			}
+
+      // If uploaded VIDEO has no error then load them.
 			if (($_FILES['video-upload']['error']) == 0) {
 					move_uploaded_file($_FILES['video-upload']['tmp_name'], "../public/uploads/" . $_FILES['video-upload']['name']);
 					$video = "../public/uploads/" . $_FILES['video-upload']['name'];
 			}
+
+      // If uploaded CONTENTS has no error then load them.
 			if (isset($_REQUEST['content']) && $_REQUEST['content'] != "") {
 					$db->setPost($_REQUEST['id'], nl2br(htmlspecialchars($_REQUEST['content'], ENT_QUOTES)), $_REQUEST['name'], $audio, $video, $image);
 			}

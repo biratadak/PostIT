@@ -1,7 +1,7 @@
 <?php
 
   require("model/DbConnection.php");
-  $db = new DbConnection('postit');
+  $db = new DbConnection();
   require_once 'Model/config.php';
   if (isset($_SESSION['loggedIn'])) {
     try {
