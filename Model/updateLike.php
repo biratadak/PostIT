@@ -15,7 +15,6 @@
   }
   // If Ajax called for a perticular like then update them accordingly. 
   else if (isset($_GET['pi']) && isset($_GET['ui'])) {
-
     $query = $db->conn->query('SELECT * from likes where `post_id`=' . $_GET['pi'] . ' AND `id`=' . $_GET['ui'])->fetch_assoc();
     // If likes found for given user id and post id 
     if (isset($query)) {
@@ -34,7 +33,6 @@
     else {
       $db->conn->query("INSERT INTO `likes` (`post_id`,`id`,`liked`) 
     VALUES(" . $_GET['pi'] . "," . $_GET['ui'] . "," . $_GET['li'] . ")");
-
     }
   }
 ?>

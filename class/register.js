@@ -1,10 +1,18 @@
-  // Check validation for name, mail, userId and password errors.
+  /**
+   * Check validation for name, mail, userId and password errors.
+   * 
+   *  @returns bool
+   *    If no error found returns TRUE else FALSE.
+   */
   function validate() {
-    if (document.getElementsByName("nameerr")[0].innerHTML == "" && document.getElementsByName("mailerr")[0].innerHTML == "" && document.getElementsByName("usererr")[0].innerHTML == "" && document.getElementsByName("passerr")[0].innerHTML == "") {
-      return true;
+    if (document.getElementsByName("nameerr")[0].innerHTML == "" 
+    && document.getElementsByName("mailerr")[0].innerHTML == "" 
+    && document.getElementsByName("usererr")[0].innerHTML == "" 
+    && document.getElementsByName("passerr")[0].innerHTML == "") {
+      return TRUE;
     }
     else {
-      return false;
+      return FALSE;
     }
   };
   

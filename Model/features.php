@@ -94,7 +94,6 @@
         }
         return FALSE;
       }
-
     }
 
     /**
@@ -142,7 +141,6 @@
      * 
      **/
     public function validMailBox(string $mailId) {
-
       // API Calling using HttpGuzzle.
       $client = new Client([
         // Base uri of the site

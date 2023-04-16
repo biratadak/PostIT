@@ -37,7 +37,6 @@
         } catch (Exception $e) {
           echo $e;
         }
-
       }
     } 
     else {
@@ -46,24 +45,20 @@
   }
 ?>
 <html>
-
 <head>
   <link rel="stylesheet" href="stylesheet/style.css">
   <title>Register</title>
   <script src="class/validation.js"></script>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
-
 </head>
 
 <body>
-
   <form class="form-div" method="POST" action="register.php" onsubmit="return validate()">
     <h3>Register Yourself</h2>
       <br>
       Name: <span class="error" name="nameerr">*
       </span><br> <input type="text" name="name" value=<?php if (isset($_POST['name']))
         echo $_POST['name']; ?>>
-
       <br><br>
       Email: <span class="error" name="mailerr">*
       </span><br><input type="text" name="mailId" value=<?php if (isset($_POST['mailId']))
@@ -78,18 +73,12 @@
       Password: <span class="error" name="passerr">*
       </span><br><input type="password" name="pass" id="pass" value=<?php if (isset($_POST['pass']))
         echo $_POST['pass']; ?>><i class="bi bi-eye-slash " id="togglePassword"></i>
-
       <br><br>
       <div class="sp-bw">
         <input type="submit" class="hover-eff click-eff btn" name="register" value="Regiser User">
         <a class="link-btn grow" href="index.php">Already have account.</a>
-
       </div>
-
   </form>
-
-
 </body>
 <script src="class/register.js"></script>
-
 </html>

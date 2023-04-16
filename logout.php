@@ -12,7 +12,6 @@
         unset($_SESSION['profile']);
         echo 'Successfully LoggedOut';
         echo '<br><p><a href="index.php">GOTO-> Login page</a></p>';
-
       }
     } 
     catch (Exception $e) {
@@ -29,8 +28,9 @@
   else {
    echo 'already disconnected' 
 ?>
-  <br><a href="index.php">GOTO-> Login page</a>';
 
+  <br><a href="index.php">GOTO-> Login page</a>';
+  
 <?php 
   } 
 ?>

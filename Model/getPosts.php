@@ -3,7 +3,6 @@
 <?php
   if (!isset($_SESSION))
     session_start();
-
     require('../Model/DbConnection.php');
     $db = new DbConnection();
   // For post counts.
@@ -47,10 +46,9 @@
           </div>
         </div>
       <?php } ?>
-
     </div>
+    
     <?php
-
       // If video is available in post then list it.
       if ($row['video'] != "") { 
     ?>
@@ -65,7 +63,6 @@
         </i></div>
     <?php 
       }
-
       // If photo is available in post then list it.
       if ($row['photo'] != "") { 
     ?>
@@ -75,7 +72,6 @@
       </div>
     <?php 
       }
-
       // If audio is available in post then list it.
       if ($row['audio'] != "") { 
     ?>

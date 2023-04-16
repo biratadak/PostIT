@@ -3,7 +3,6 @@
 
   if (!isset($_SESSION))
     session_start();
-
   // If loggedIn then view wall otherwise show error.
   if (isset($_SESSION['loggedIn'])) {
     // If the linkedIn adapter is set in the session then unserialize it and view wall.

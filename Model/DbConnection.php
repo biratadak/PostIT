@@ -1,4 +1,3 @@
-
 <?php
 
   // Loaded all required libraries.
@@ -9,19 +8,79 @@
   $dotEnv->safeLoad();
 
   /**
-   * Connects with database using mysqli.
+   * Connects with database using mysqli, and provide more functionality to for database.
    * 
-   *  @method getQueryController
-   *    Get query response as an array.
+   *  @method existsUserId
+   *    Checks if user's user_id exists.
    * 
-   *  @var string $conn
-   *    Store the mysqli connection object.
+   *  @method existsMailId
+   *    Checks if user's mail id exists. 
+   * 
+   *  @method getQueryArray
+   *    Sends query response as array
+   * 
+   *  @method getPhotoURLbyId
+   *    Get photo url of user by id. 
+   * 
+   *  @method getUsersCount
+   *    Get counts of all users. 
+   * 
+   *  @method getPhotoURLbyUserId
+   *    Get photo url of user by user id. 
+   * 
+   *  @method getPass
+   *    Get Password of given userId.
+   * 
+   *  @method getName
+   *    Get name of given userId.
+   * 
+   *  @method getNamebyId
+   *    Get name of given ID. 
+   * 
+   *  @method getId
+   *    Get Id of given userId. 
+   * 
+   *  @method getAbout
+   *    Get About of given userId. 
+   * 
+   *  @method getAllUsers
+   *    Get all users of ordered by given order, by default it order by first_name.
+   * 
+   *  @method getAllPosts
+   *    Get limit number of posts of ordered by given order.
+   * 
+   *  @method getOnline
+   *    Get online status of given userId. 
+   * 
+   *  @method getLikeCountbyPostId
+   *    Get like count of given postId. 
+   * 
+   *  @method getLikedPostId
+   *    Get postIds of liked posts only.
+   * 
+   *  @method getPostIdbyUserId
+   *    Get post id of given userId as string. 
+   * 
+   *  @method setPost
+   *    Set new created post to database. 
+   * 
+   *  @method setUser
+   *    Sets users details. 
+   * 
+   *  @method setOnline
+   *    Update online status of given user id.
+   * 
+   *  @method deletePost
+   *    Delete post of given postId. 
+   * 
+   *  @var mysqli $conn
+   *    Update online status of given user id. 
    *
    * */
   class DbConnection {
     // Define global $conn to hold connection object after successful authentication with database.
-    public $conn;
-    function __construct() {
+    public mysqli $conn;
+    public function __construct() {
       $connect = new mysqli("localhost", $_ENV['sqlUser'], $_ENV['sqlPass'], $_ENV['dbName']);
       if ($connect->connect_error) {
         echo "Connection error:" . $connect->connect_error;
@@ -42,7 +101,6 @@
       if (isset($this->conn->query("select user_id from `oauth-users` where `user_id`='" . $userId . "'")->fetch_assoc()['user_id'])) {
         return TRUE;
       }
-      
         return FALSE;
     }
 
@@ -78,7 +136,6 @@
       }
       return $response;
     }
-
 
     /**
      * Get photo url of user by id. 
@@ -123,9 +180,7 @@
         return $this->conn->query('select photo_url from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['photo_url'];
       }
         return "";
-
     }
-
 
     /**
      * Get Password of given userId. 
@@ -144,7 +199,6 @@
         return $this->conn->query("select pass from `oauth-users` where user_id='" . $userId . "'")->fetch_assoc()['pass'];
       }
         return "";
-
     }
 
     /**
@@ -161,7 +215,6 @@
         return $this->conn->query('SELECT CONCAT_WS(" ", `first_name`, `last_name`) as `fullname` from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['fullname'];
       }
         return "";
-
     }
 
     /**
@@ -178,7 +231,6 @@
         return $this->conn->query('SELECT CONCAT_WS(" ", `first_name`, `last_name`) as `fullname` from `oauth-users` where id="' . $id . '"')->fetch_assoc()['fullname'];
       }
         return "";
-
     }
 
     /**
@@ -195,7 +247,6 @@
         return $this->conn->query('SELECT id from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['id'];
       }
         return "";
-
     }
 
     /**
@@ -212,12 +263,10 @@
         return $this->conn->query('SELECT `about` from `oauth-users` where user_id="' . $userId . '"')->fetch_assoc()['about'];
       }
         return "";
-
     }
 
     /**
-     * Get all users of ordered by given order,
-     * by default it order by first_name.  
+     * Get all users of ordered by given order, by default it order by first_name.  
      * 
      *  @param string $order
      *    Stores the order string.
@@ -392,7 +441,5 @@
       $this->conn->query('DELETE FROM POSTS WHERE post_id="' . $postId . '"');
       $this->conn->query('SET FOREIGN_KEY_CHECKS = 1');
     }
-
   }
-
 ?>

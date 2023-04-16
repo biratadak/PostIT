@@ -13,7 +13,6 @@
   <link rel="stylesheet" href="stylesheet/style.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css" />
   <script src="class/validation.js"></script>
-
 </head>
 
 <!-- BODY section -->
@@ -59,13 +58,11 @@
 
   if ((isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'])) {
     if (isset($_SESSION['adapter'])) {
-
       $adapter = unserialize($_SESSION['adapter']);
     } ?>
     <div class="container">
       <?php require('Controller/AuthController.php'); ?>
     </div>
-
     <?php
     // Footer section
     require('view/footer.php');
@@ -79,7 +76,6 @@
       </span><br>
       <input type="text" name="userId" placeholder=" Username / Email" value='<?php if (isset($_POST["userId"]))
         echo $_POST["userId"]; ?>'>
-
       <br><br>
       Password:<span class="error" name="passerr">
       </span><br>
@@ -96,12 +92,10 @@
       <div class="sp-bw">
         <input class="hover-eff click-eff btn" type="submit" name="submit" id="login-btn" value="Login">
         <a class="link-btn grow " href="register.php">I\'m new</a>
-
       </div>
       <hr><a href="login.php"><img class=" click-eff" height="30px" src="icons/connect-with-linkedin.png"></a>
     </form>
 
   <?php } ?>
-
 </body>
 <script src="class/index.js"></script>

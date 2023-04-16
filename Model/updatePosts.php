@@ -4,7 +4,8 @@ session_start();
 
 	require('../Model/DbConnection.php');
 	$db = new DbConnection();
-  // Update posts according to ajax call, If setpost is TRUE then move the uploaded files to public/uploads folder for each audio, video and picture.
+  // Update posts according to ajax call, 
+  // If setpost is TRUE then move the uploaded files to public/uploads folder for each audio, video and picture.
 	if (isset($_REQUEST['setPost']) && $_REQUEST['setPost'] == 'TRUE') {
 			// Holds the image url if provided.
 			$image = "";
@@ -44,5 +45,4 @@ session_start();
 	if (isset($_REQUEST['delete']) && $_REQUEST['delete'] == 'TRUE') {
 			$db->deletePost($_REQUEST['id']);
 	}
-
 ?>

@@ -15,8 +15,6 @@
       ],
       'scope' => 'r_liteprofile r_emailaddress',
     ];
-
     $adapter = new Hybridauth\Provider\LinkedIn($config);
   }
-
 ?>

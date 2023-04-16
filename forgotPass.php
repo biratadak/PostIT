@@ -1,5 +1,4 @@
 <?php
-
 require("model/DbConnection.php");
 require("model/Features.php");
 
@@ -19,18 +18,19 @@ if (isset($_POST["mailId"])) {
       <br>
       <h4 class='error'>Invalid email address.</h4>
     <?php }
-
     // If mail is valid then send reset link 
-      elseif ($db->existsMailId($_POST['mailId'])) {
-        $feature = new Features();
-        $feature->sendMail($_POST['mailId'], "Password Reset Link", "Your UserId: " . $_POST['mailId'] . "<br>Password: " . $db->getPass($_POST['mailId']) . "<br>Change Password after login.");
-      } else {
-        echo "<br><h4 class='error-div'>Mail is not registered with &copyPostIt </h4>";
-      }
-    } else {
-      echo "<h4 class='error-div'>Fill valid MailId</h4>";
-    }
+    else if ($db->existsMailId($_POST['mailId'])) {
+      $feature = new Features();
+      $feature->sendMail($_POST['mailId'], "Password Reset Link", "Your UserId: " . $_POST['mailId'] . "<br>Password: " . $db->getPass($_POST['mailId']) . "<br>Change Password after login.");
+    } else {?>
+      <h4 class='error-div'>Mail is not registered with &copyPostIt </h4>
+    <?php }
   }
+  // If mail not valid show error
+  else { ?>
+    <h4 class='error-div'>Fill valid MailId</h4>
+  <?php }
+}
 ?>
 <html>
 
@@ -42,7 +42,6 @@ if (isset($_POST["mailId"])) {
 </head>
 
 <body>
-
   <form class="form-div" method="POST" action="forgotPass.php" onsubmit="return validate()">
     <h3>Register Yourself</h2>
       <br>
@@ -55,7 +54,6 @@ if (isset($_POST["mailId"])) {
         <a class="link-btn grow" href="index.php">LogIn.</a>
       </div>
   </form>
-
 </body>
 
 <script src="class/forgotPass.js"></script>

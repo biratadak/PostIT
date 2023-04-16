@@ -2,10 +2,10 @@
 /**
  * Function to check only alphabet and spaces in given name field.
  * 
- *  @param fieldName
+ *  @param string fieldName
  *    Field name where to check the error.
  * 
- *  @param errorFieldName
+ *  @param string errorFieldName
  *    Name of the field to display error if occured.
  *    
  * */ 
@@ -26,10 +26,10 @@ function allLetter(fieldName, errorFieldName) {
 /**
  * Function to check valid Indian phone no.
  * 
- *  @param fieldName
+ *  @param string fieldName
  *    Field name where to check the error.
  * 
- *  @param errorFieldName
+ *  @param string errorFieldName
  *    Name of the field to display error if occured.
  *    
  * */
@@ -56,10 +56,10 @@ function validPhone(fieldName, errorFieldName) {
 /**
  * Function to check valid mail id.
  * 
- *  @param fieldName
+ *  @param string fieldName
  *    Field name where to check the error.
  * 
- *  @param errorFieldName
+ *  @param string errorFieldName
  *    Name of the field to display error if occured.
  *    
  * */
@@ -80,10 +80,10 @@ function validMail(fieldName, errorFieldName) {
 /**
  * Function to live update the display field with data from given name field.
  * 
- *  @param fieldName
+ *  @param string fieldName
  *    Field name where to check the error.
  * 
- *  @param errorFieldName
+ *  @param string errorFieldName
  *    Name of the field to display error if occured.
  *    
  * */
@@ -99,10 +99,10 @@ function liveUpdate(fieldName) {
 /**
  * Function to check valid Indian phone no.
  * 
- *  @param fieldName
+ *  @param string fieldName
  *    Field name where to check the error.
  * 
- *  @param errorFieldName
+ *  @param string errorFieldName
  *    Name of the field to display error if occured.
  *    
  * */
@@ -123,10 +123,10 @@ function validUser(fieldName, errorFieldName) {
 /**
  * Function to check Password has atleast one char,digit and Special character.
  * 
- *  @param fieldName
+ *  @param string fieldName
  *    Field name where to check the error.
  * 
- *  @param errorFieldName
+ *  @param string errorFieldName
  *    Name of the field to display error if occured.
  *    
  * */
@@ -140,13 +140,11 @@ function validPass(fieldName, errorFieldName) {
     else {
       // Checks for atleast one digit.
       if (!inputtxt.match(/^(?=.*\d)/)){
-
         document.getElementsByName(errorFieldName)[0].innerHTML =
         "<br>*Password should contain atleast one digit";
       }
       // Checks for atleast one alphabet.
       else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/)){
-
         document.getElementsByName(errorFieldName)[0].innerHTML =
         "<br>*Password should contain atleast one uppercase and lowercase";
       }
@@ -169,17 +167,16 @@ function validPass(fieldName, errorFieldName) {
 /**
  * Toggle show and hide password script.
  * 
- *  @param buttonField
+ *  @param string buttonField
  *    Field name where to check the error.
  * 
- *  @param passField
+ *  @param string passField
  *    Name of the password field.
  *    
  * */
 function togglePass(buttonField, passField) {
   const togglePassword = document.querySelector(buttonField);
   const password = document.querySelector(passField);
-
   togglePassword.addEventListener("click", function () {
     // Toggle the type attribute.
     const type =
@@ -193,15 +190,18 @@ function togglePass(buttonField, passField) {
 /**
  * Countdown timer after some delay.
  * 
- *  @param displayQuerySelector
+ *  @param string displayQuerySelector
  *    Field name where to shoe countdown.
  * 
- *  @param delay
+ *  @param string delay
  *    Name of the password field.
  *    
  * */
 function countDown(displayQuerySelector, delay) {
+  // Holds the display field of timer.
   const field = document.querySelector(displayQuerySelector);
+
+  // Holds the delay duration in seconds.
   let num = parseInt(delay);
   const i = setInterval(() => {
     num -= 1;

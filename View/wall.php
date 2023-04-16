@@ -1,5 +1,4 @@
 <script src="../class/wall.js"></script>
-
 <div class="posts-body">
   <section class="left-section  fd-col">
     <div class="left-upper">
@@ -50,7 +49,6 @@
         <textarea class="post-content" name="content" placeholder="Start a post"></textarea>
       </div>
       <div class="create-posts-options">
-
         <div class="upload-options">
           <label class="photo-upload" for="photo-upload">Photo</label>
           <input id="photo-upload" name="photo-upload" type="file" accept="image/*" hidden>
@@ -67,7 +65,6 @@
           <label class="post-create-btn" for="post-create-btn"></label>
           <input id="post-create-btn" name="post-create-btn" hidden>
         </div>
-
       </div>
     </form>
 

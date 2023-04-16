@@ -50,5 +50,4 @@
     echo '<br>--No Comments Found--';
   }
 }
-
 ?>
