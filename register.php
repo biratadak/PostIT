@@ -45,7 +45,8 @@
           <span >Redirecting page in <span class='counter'>10</span> sec.</span>
           <?php
           header("refresh:10;url=index.php");
-        } catch (Exception $e) {
+        } 
+        catch (Exception $e) {
           echo $e;
         }
       }
