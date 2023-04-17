@@ -122,17 +122,17 @@ function validPass(fieldName, errorFieldName) {
       // Checks for atleast one digit.
       if (!inputtxt.match(/^(?=.*\d)/)){
         document.getElementsByName(errorFieldName)[0].innerHTML =
-        "<br>*Password should contain atleast one digit";
+        "*Password should contain atleast one digit";
       }
       // Checks for atleast one alphabet.
       else if (!inputtxt.match(/^(?=.*[a-z])(?=.*[A-Z])/)){
         document.getElementsByName(errorFieldName)[0].innerHTML =
-        "<br>*Password should contain atleast one uppercase and lowercase";
+        "*Password should contain atleast one uppercase and lowercase";
       }
       // Checks for atleast one special character.
       else if (!inputtxt.match(/^(?=.*[!@#$%^&*])/)){
         document.getElementsByName(errorFieldName)[0].innerHTML =
-        "<br>*Password should contain atleast special character";
+        "*Password should contain atleast special character";
       }
       else {
         document.getElementsByName(errorFieldName)[0].innerHTML = "";
@@ -140,7 +140,7 @@ function validPass(fieldName, errorFieldName) {
       // If password is not between 8 and 16 characters then show error.
       if (length(inputtxt) < 8 && length(inputtxt) < 16) {
         document.getElementsByName(errorFieldName)[0].innerHTML =
-          "<br>*Password should contain 8 to 16";
+          "*Password should contain 8 to 16";
       }
     }
   };

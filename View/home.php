@@ -11,7 +11,8 @@
     require('wall.php');
   }
   // If not loggedIn then show error. 
-  else {
-    echo "<br><h1 class='bg-danger'>user not logged in</h1>";
+  else {?>
+    <h1 class='bg-danger'>user not logged in</h1>
+  <?php
   }
 ?>

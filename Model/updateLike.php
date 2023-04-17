@@ -5,8 +5,9 @@
   require('DbConnection.php');
   $db = new DbConnection();
   // Fetch total likes of each posts
-  if (isset($_REQUEST['postId'])) {
-    echo '<span id="totalLikes">' . $db->getLikeCountbyPostId($_REQUEST['postId']) . '</span>';
+  if (isset($_REQUEST['postId'])) {?>
+    <span id="totalLikes"><?php echo $db->getLikeCountbyPostId($_REQUEST['postId']); ?></span>
+  <?php
   }
   // Fetch all post id where current users liked.
   if (isset($_REQUEST['userId'])) {

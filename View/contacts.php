@@ -27,8 +27,7 @@
       <?php }
   } 
   else { ?>
-      <br>
-      <h1 class='bg-danger'>user not logged in</h1>
+      <h1 class='bg-danger br'>user not logged in</h1>
       <?php
   }
 ?>

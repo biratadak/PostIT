@@ -75,12 +75,22 @@
    * 
    *  @var mysqli $conn
    *    Update online status of given user id. 
-   *
-   * */
+   */
   class DbConnection {
-    // Define global $conn to hold connection object after successful authentication with database.
+    /**
+     * @var object
+     *  Define global $conn to hold connection object after successful authentication with database.
+     */
     public mysqli $conn;
+
+    /**
+     * Creates MySqli object and connect with database.
+     * 
+     *  @return mysqli object
+     *    Returns the connection object of database.
+     */
     public function __construct() {
+      // Stores the Mysqli connection object. 
       $connect = new mysqli("localhost", $_ENV['sqlUser'], $_ENV['sqlPass'], $_ENV['dbName']);
       if ($connect->connect_error) {
         echo "Connection error:" . $connect->connect_error;
@@ -369,7 +379,6 @@
      * 
      *  @param string $photo
      *    Stores the photo link with filename of post.
-     *  
      */
     public function setPost(int $id, string $content, string $name, string $audio = "", string $video = "", string $photo = ""): void {
       $this->conn->query('INSERT INTO `posts` (id,content,name,audio,video,photo)
@@ -408,7 +417,6 @@
      *  
      *  @param string $modified
      *    Stores the modification date  of account details.
-     *  
      */
     public function setUser(string $oauth_provider, string $user_id, string $first_name, string $last_name, string $email, string $phone, string $gender, string $photo_url, string $link, string $modified): void {
       $sql = "INSERT INTO `oauth-users` (oauth_provider, user_id , first_name, last_name, email, phone, photo_url, link ,modified ) values('" . $oauth_provider . "','" . $user_id . "','" . $first_name . "','" . $last_name . "','" . $email . "','" . $phone . "','" . $photo_url . "','" . $link . "','" . $modified . "')";
@@ -423,7 +431,6 @@
      *  
      *  @param string $status
      *    Stores the status string.
-     *  
      */
     public function setOnline(string $userId, string $status):void {
       $this->conn->query('UPDATE `oauth-users` SET online="' . $status . '" where user_id="' . $userId . '"');
@@ -434,7 +441,6 @@
      * 
      *  @param int $postId
      *    Stores the psot id string.
-     *  
      */
     public function deletePost(int $postId):void {
       $this->conn->query('SET FOREIGN_KEY_CHECKS = 0');

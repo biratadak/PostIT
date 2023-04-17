@@ -6,7 +6,7 @@
   session_start();
   require_once('Model/config.php');
   require_once('model/DbConnection.php');
-  $db = new DbConnection('postit');
+  $db = new DbConnection();
   // If already LoggedIn then redirect to base URL
   if (isset($_SESSION['loggedIn']) && $_SESSION['loggedIn'] == TRUE) {
     header('Location:http://post.it/home');

@@ -72,13 +72,12 @@
 
     <form class="form-div" method="POST" action="index.php">
       <h2>Login Page</h2>
-      Username: <span class="error" name="usererr">
-      </span><br>
+      Username: <span class="error br" name="usererr">
+      </span>
       <input type="text" name="userId" placeholder=" Username / Email" value='<?php if (isset($_POST["userId"]))
         echo $_POST["userId"]; ?>'>
-      <br><br>
-      Password:<span class="error" name="passerr">
-      </span><br>
+      Password:<span class="error br" name="passerr">
+      </span>
       <span>
         <input type="password" name="pass" id="pass" placeholder="Enter Password" value='<?php if (isset($_POST["pass"]))
           echo $_POST["pass"] ?>'>
@@ -87,10 +86,10 @@
         </span>
         <?php
         if (isset($forgotPass) && $forgotPass) { ?>
-        <br><a class="link-btn" href="forgotPass.php">forgotten password?</a> <br><br>
+        <a class="link-btn br" href="forgotPass.php">forgotten password?</a>
       <?php } ?>
       <div class="sp-bw">
-        <input class="hover-eff click-eff btn" type="submit" name="submit" id="login-btn" value="Login">
+        <input class="hover-eff click-eff btn br" type="submit" name="submit" id="login-btn" value="Login">
         <a class="link-btn grow " href="register.php">I\'m new</a>
       </div>
       <hr><a href="login.php"><img class=" click-eff" height="30px" src="icons/connect-with-linkedin.png"></a>

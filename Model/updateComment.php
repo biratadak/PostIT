@@ -5,8 +5,7 @@
   require('DbConnection.php');
   $db = new DbConnection();
   // If requested for update and postId and uuserId is set and comment is not empty then add the comment to database.
-  if (isset($_REQUEST['update']) && isset($_REQUEST['pi']) && isset($_REQUEST['ui'])) {
-    if ($_REQUEST['content'] != "")
+  if (isset($_REQUEST['update']) && isset($_REQUEST['pi']) && isset($_REQUEST['ui']) && $_REQUEST['content'] != "") {
       $db->conn->query("INSERT INTO `comments` (`post_id`,`id`,`comment`) 
       VALUES(" . $_REQUEST['pi'] . "," . $_REQUEST['ui'] . ",'" . $_REQUEST['content'] . "')");
   }
