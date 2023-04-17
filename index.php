@@ -3,7 +3,7 @@
   if (!isset($_SESSION))
     session_start();
   require("vendor/autoload.php");
-  require("model/DbConnection.php");
+  require("class/DbHelper.php");
 
   // Header Loads here
   require('view/header.php');
@@ -20,7 +20,7 @@
 <body>
 
   <?php
-  $db = new DbConnection('postit');
+  $db = new DbConnection();
   // For login with form section
   // Checks if userId and Password field are empty.
   if (isset($_POST['userId']) && isset($_POST['pass'])) {

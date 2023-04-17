@@ -30,9 +30,7 @@
   else {
    echo 'already disconnected' 
 ?>
-
-  <a href="index.php">GOTO-> Login page</a>';
-  
+  <a href="index.php">GOTO-> Login page</a>
 <?php 
   } 
 ?>

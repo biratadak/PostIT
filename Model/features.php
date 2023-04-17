@@ -170,15 +170,16 @@
       else { ?>
         <div class='error-div'>Error:
           <?php
-          if (isset(json_decode($response)->format_valid) && json_decode($response)->format_valid == FALSE) {
-            echo "E-mail format is not valid";
-          }
-          if (isset(json_decode($response)->mx_found) && json_decode($response)->mx_found == FALSE) {
-            echo "MX-Records not found";
-          }
-          if (isset(json_decode($response)->smtp_check) && json_decode($response)->smtp_check == FALSE) {
-            echo "SMTP validation failed";
-          } ?>
+            if (isset(json_decode($response)->format_valid) && json_decode($response)->format_valid == FALSE) {
+              echo "E-mail format is not valid";
+            }
+            if (isset(json_decode($response)->mx_found) && json_decode($response)->mx_found == FALSE) {
+              echo "MX-Records not found";
+            }
+            if (isset(json_decode($response)->smtp_check) && json_decode($response)->smtp_check == FALSE) {
+              echo "SMTP validation failed";
+            } 
+          ?>
         </div>
         <?php
         return FALSE;
@@ -196,7 +197,6 @@
      **/
     public function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found") : void {
       $mail = new PHPMailer(TRUE);
-
       try {
         $mail->SMTPDebug = 0;
         $mail->isSMTP();
