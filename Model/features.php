@@ -191,7 +191,7 @@
      *  @param string $mailId
      *    Takes mailId as input field data of the user. 
      * 
-     *   @return void
+     *  @return void
      * 
      **/
     public function sendMail(string $mailId, string $subject = "Subject", string $body = "no data found") : void {
