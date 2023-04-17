@@ -47,7 +47,7 @@
     }
   } 
   else {
-    echo '<br>--No Comments Found--';
+    echo '--No Comments Found--';
   }
 }
 ?>

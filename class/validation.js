@@ -78,25 +78,6 @@ function validMail(fieldName, errorFieldName) {
 }
 
 /**
- * Function to live update the display field with data from given name field.
- * 
- *  @param string fieldName
- *    Field name where to check the error.
- * 
- *  @param string errorFieldName
- *    Name of the field to display error if occured.
- *    
- * */
-function liveUpdate(fieldName) {
-  document.getElementsByName(fieldName)[0].onkeyup = function () {
-    document.querySelector("#display").value = document
-      .getElementsByName("fname")[0]
-      .value.toUpperCase()
-      .concat(" ", document.getElementsByName("lname")[0].value.toUpperCase());
-  };
-}
-
-/**
  * Function to check valid Indian phone no.
  * 
  *  @param string fieldName
@@ -148,6 +129,7 @@ function validPass(fieldName, errorFieldName) {
         document.getElementsByName(errorFieldName)[0].innerHTML =
         "<br>*Password should contain atleast one uppercase and lowercase";
       }
+      // Checks for atleast one special character.
       else if (!inputtxt.match(/^(?=.*[!@#$%^&*])/)){
         document.getElementsByName(errorFieldName)[0].innerHTML =
         "<br>*Password should contain atleast special character";

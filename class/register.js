@@ -11,9 +11,7 @@
     && document.getElementsByName("passerr")[0].innerHTML == "") {
       return TRUE;
     }
-    else {
       return FALSE;
-    }
   };
   
   // Checks if all charecters are letters only

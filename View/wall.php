@@ -68,7 +68,6 @@
       </div>
     </form>
 
-    <!-- <select class="sort-btn"> -->
     <select type="submit" name="sort" id="sort" onchange="sortPosts(this.value)">
       <option value=""> --SELECT ORDER-- </option>
       <option value="DATE ASC">Date Ascending.</option>

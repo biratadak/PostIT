@@ -37,7 +37,7 @@
       </div>
       <a class="btn logout-btn" href="../logout.php">LOGOUT</a>
       <?php
-    }
+      }
     ?>
   </nav>
 </header>

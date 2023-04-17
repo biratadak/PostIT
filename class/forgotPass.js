@@ -4,7 +4,6 @@
    *  @returns bool
    *    return true if element found else false.
    *  */ 
-
   function validate() {
     if (document.getElementsByName("mailerr")[0].innerHTML == "") {
       return TRUE;

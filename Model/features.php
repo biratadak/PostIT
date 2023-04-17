@@ -62,9 +62,9 @@
      *
      **/
     public function onlyDigit(string $str) {
-      if (preg_match("/^[1-9][0-9]{0,15}$/", $str))
+      if (preg_match("/^[1-9][0-9]{0,15}$/", $str)) {
         return TRUE;
-
+      }
       return FALSE;
     }
 
@@ -82,7 +82,10 @@
      * 
      **/
     public function validImage(int $imageSize, string $imageType) {
-      if (($imageSize / 1000) <= 500 && ($imageType == 'image/jpg' || $imageType == 'image/png' || $imageType == 'image/jpeg')) {
+      if (($imageSize / 1000) <= 500 
+      && ($imageType == 'image/jpg' 
+      || $imageType == 'image/png' 
+      || $imageType == 'image/jpeg')) {
         return TRUE;
       } 
       else {
@@ -158,7 +161,9 @@
       $response = $request->getBody();
 
       // Checking format, mx, smtp, and deliverablity score for the mail
-      if (json_decode($response)->format_valid == TRUE && json_decode($response)->mx_found == TRUE && json_decode($response)->smtp_check == TRUE) {
+      if (json_decode($response)->format_valid == TRUE 
+      && json_decode($response)->mx_found == TRUE 
+      && json_decode($response)->smtp_check == TRUE) {
         echo "(E-mail deliverablity score is: " . ((json_decode($response)->score) * 100) . "% ).";
         return TRUE;
       } 
